@@ -1,0 +1,261 @@
+import './style.css'
+import { AudioPlayer } from './AudioPlayer';
+import { HourlyTimeline, TimelineManager } from './TimelineManager';
+import { MetaDisplay } from './MetaDisplay';
+
+const takingRootTimeline: HourlyTimeline = {
+  0: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '(waiting for track for 00:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #d7561d, #faeec1)',
+      backgroundTileImgUrl: '/taking-root/img/tile-shell.png',
+    }
+  },
+  1: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '(waiting for track for 01:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  2: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '(waiting for track for 02:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  3: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '(waiting for track for 03:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  4: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '(waiting for track for 04:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  5: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '(waiting for track for 05:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  6: {
+    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    meta: {
+      title: '6 AM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #d7561d, #faeec1)',
+      backgroundTileImgUrl: '/taking-root/img/tile-shell.png',
+    }
+  },
+  7: {
+    audioUrl: '/taking-root/music/7 AM - Animal Crossing - Taking Root--EvbkIEPyf4.opus',
+    meta: {
+      title: '7 AM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #7ace20, #3f5117)',
+      backgroundTileImgUrl: '/taking-root/img/tile-warm-fruit.png',
+    }
+  },
+  8: {
+    audioUrl: '/taking-root/music/8 AM - Animal Crossing - Taking Root-grn83Yt38qY.opus',
+    meta: {
+      title: '8 AM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #67d0e7, #6fc4d5, #2b627f)',
+      backgroundTileImgUrl: '/taking-root/img/tile-garden.png',
+    }
+  },
+  9: {
+    audioUrl: '/taking-root/music/9 AM - Animal Crossing - Taking Root-ACquTCLlOIM.opus',
+    meta: {
+      title: '9 AM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #94c743, #80b03b, #61a152, #1b6231)',
+      backgroundTileImgUrl: '/taking-root/img/tile-work.png',
+    }
+  },
+  10: {
+    audioUrl: '/taking-root/music/10 AM - Animal Crossing - Taking Root-gbCQXFdWHVU.opus',
+    meta: {
+      title: '0 AM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #89d878, #42b760, #42b760)',
+      backgroundTileImgUrl: '/taking-root/img/butterflies-blue.png',
+      blendMode: 'half-visible',
+    }
+  },
+  11: {
+    audioUrl: '/taking-root/music/11 AM - Animal Crossing - Taking Root-YAAZCej0G-U.opus',
+    meta: {
+      title: '1 AM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #7ac9f6, #b5d3a1, #9ec87b)',
+      backgroundTileImgUrl: '/taking-root/img/tile-weeb.png',
+      blendMode: 'gray-soft',
+    }
+  },
+  12: {
+    audioUrl: '/taking-root/music/12 PM - Animal Crossing - Taking Root-0zbyDEqSfGQ.opus',
+    meta: {
+      title: '2 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #d9d7e5, #d5d4e4, #b97b75, #b94350)',
+      backgroundTileImgUrl: '/taking-root/img/tile-cards.png',
+      blendMode: 'half-visible',
+    }
+  },
+  13: {
+    audioUrl: '/taking-root/music/1 PM - Animal Crossing - Taking Root-DX2LKT7LyZc.opus',
+    meta: {
+      title: '1 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #caa685, #c9a786, #c2af8f, #bcb697, #9d9786, #837e78)',
+      backgroundTileImgUrl: '/taking-root/img/tile-bones.png',
+      blendMode: 'half-visible',
+    }
+  },
+  14: {
+    audioUrl: '/taking-root/music/2 PM - Animal Crossing - Taking Root-PjGfsuEgF6g.opus',
+    meta: {
+      title: '2 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #c9c0a9, #c39370, #b64a51, #491c10)',
+      backgroundTileImgUrl: '/taking-root/img/tile-cozy.png',
+      blendMode: 'gray-soft',
+    }
+  },
+  15: {
+    audioUrl: '/taking-root/music/3 PM - Animal Crossing - Taking Root-AA_pu-2Omtg.opus',
+    meta: {
+      title: '3 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #94c743, #80b03b, #61a152, #1b6231)',
+      backgroundTileImgUrl: '/taking-root/img/tile-work.png',
+    }
+  },
+  16: {
+    audioUrl: '/taking-root/music/4 PM - Animal Crossing - Taking Root-2QGxavJrkHQ.opus',
+    meta: {
+      title: '4 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  17: {
+    audioUrl: '/taking-root/music/5 PM - Animal Crossing - Taking Root (feat. rud)-IV9N_Lr61QY.opus',
+    meta: {
+      title: '5 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #7ac9f6, #b5d3a1, #9ec87b)',
+      backgroundTileImgUrl: '/taking-root/img/tile-cards.png',
+      blendMode: 'gray-soft',
+    }
+  },
+  18: {
+    audioUrl: '/taking-root/music/6 PM - Animal Crossing - Taking Root-66drz4evPZk.opus',
+    meta: {
+      title: '6 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #c9c0a9, #c39370, #b64a51, #491c10)',
+      backgroundTileImgUrl: '/taking-root/img/tile-cozy.png',
+      blendMode: 'gray-soft',
+    }
+  },
+  19: {
+    audioUrl: '/taking-root/music/7 PM - Animal Crossing - Taking Root-oWL9TbzmY1o.opus',
+    meta: {
+      title: '7 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  20: {
+    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    meta: {
+      title: '8 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  21: {
+    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    meta: {
+      title: '(waiting for track for 21:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  22: {
+    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    meta: {
+      title: '(waiting for track for 22:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  },
+  23: {
+    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    meta: {
+      title: '(waiting for track for 23:00)',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+    }
+  }
+}
+
+const timelineManager = new TimelineManager(takingRootTimeline);
+const player = new AudioPlayer(timelineManager)
+const metaDisplay = new MetaDisplay(timelineManager)
+document.addEventListener('DOMContentLoaded', () => {
+  // make sure timelineManager listeners are registered before we start the timeline
+  player.register(
+    document.querySelector<HTMLDivElement>('#music-host')!
+  );
+
+  metaDisplay.register(
+    document.querySelector<HTMLElement>('#meta-music-title')!,
+    document.querySelector<HTMLImageElement>('#meta-banner-img')!,
+    document.querySelector<HTMLElement>('#meta-background')!,
+    document.querySelector<HTMLElement>('#meta-background-tile')!,
+  );
+
+  // start the timeline
+  timelineManager.start();
+
+  const playPauseButtonUI = document.querySelector<HTMLButtonElement>('#play-pause-button')!
+  playPauseButtonUI.addEventListener('click', () => {
+    if (player.isPlaying) {
+      player.pause()
+    } else {
+      player.play()
+    }
+
+    playPauseButtonUI.innerHTML = player.isPlaying ? 'pause' : 'play'
+  })
+})
