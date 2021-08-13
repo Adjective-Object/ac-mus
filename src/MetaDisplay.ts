@@ -54,6 +54,5 @@ export class MetaDisplay {
             }
             backgroundContainer.classList.add(meta.blendMode + '-blend');    
         }
-
     }
 }

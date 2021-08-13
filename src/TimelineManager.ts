@@ -4,8 +4,8 @@ const isHour = (hr: number): hr is Hour => {
     return hr >= 0 && hr < 24 && (hr - Math.round(hr) == 0)
 }
 
-const nextHour = (hr: Hour) : Hour => {
-    return (hr + 1) % 24 as Hour
+const addHour = (hr: Hour, offset: number = 1) : Hour => {
+    return (hr + 24 + offset) % 24 as Hour
 }
 
 export type HourlyTimeline = Record<Hour, MusicTrack>
@@ -31,8 +31,18 @@ export type CurrentTrackInfo = {
 export class TimelineManager {
     private _callbacks: ((currentTrackInfo: CurrentTrackInfo) => void)[] = []
     private _cancelTimer: undefined | (() => void)
+    private _hourOffset: number = 0;
 
     constructor(private _hourlyTimeline: HourlyTimeline) {
+    }
+
+    public get hourOffset() {
+        return this._hourOffset;
+    }
+
+    public setHourOffset(offset: number) {
+        this._hourOffset = offset;
+        this._advanceTrack(new Date())
     }
 
     public getTrackForTime(now: Date): {
@@ -43,9 +53,10 @@ export class TimelineManager {
         if (!isHour(hr)) {
             throw new Error('got illegal hour from date!')
         }
+        const hrWithOffset = addHour(hr, this._hourOffset)
         return {
-            currentTrack: this._hourlyTimeline[hr],
-            nextTrack: this._hourlyTimeline[nextHour(hr)],
+            currentTrack: this._hourlyTimeline[hrWithOffset],
+            nextTrack: this._hourlyTimeline[addHour(hrWithOffset)],
         }
     }
 
@@ -62,6 +73,7 @@ export class TimelineManager {
      */
      private _advanceTrack(now: Date) {
         const currentTrackInfo = this.getTrackForTime(now)
+        console.log('notify', currentTrackInfo)
         for (let cb of this._callbacks) {
             try {
                 cb(currentTrackInfo)
@@ -71,6 +83,7 @@ export class TimelineManager {
         }
 
         const hours = now.getHours();
+
         const nextHour = hours < 23 ? new Date(
             now.getFullYear(),
             now.getMonth(),

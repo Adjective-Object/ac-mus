@@ -2,6 +2,7 @@ import './style.css'
 import { AudioPlayer } from './AudioPlayer';
 import { HourlyTimeline, TimelineManager } from './TimelineManager';
 import { MetaDisplay } from './MetaDisplay';
+import { TimeDisplay } from './TimeDisplay';
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
@@ -97,7 +98,7 @@ const takingRootTimeline: HourlyTimeline = {
   10: {
     audioUrl: '/taking-root/music/10 AM - Animal Crossing - Taking Root-gbCQXFdWHVU.opus',
     meta: {
-      title: '0 AM - Animal Crossing - Taking Root',
+      title: '10 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
       backgroundStyle: 'linear-gradient(to bottom, #89d878, #42b760, #42b760)',
       backgroundTileImgUrl: '/taking-root/img/butterflies-blue.png',
@@ -107,7 +108,7 @@ const takingRootTimeline: HourlyTimeline = {
   11: {
     audioUrl: '/taking-root/music/11 AM - Animal Crossing - Taking Root-YAAZCej0G-U.opus',
     meta: {
-      title: '1 AM - Animal Crossing - Taking Root',
+      title: '11 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
       backgroundStyle: 'linear-gradient(to bottom, #7ac9f6, #b5d3a1, #9ec87b)',
       backgroundTileImgUrl: '/taking-root/img/tile-weeb.png',
@@ -117,7 +118,7 @@ const takingRootTimeline: HourlyTimeline = {
   12: {
     audioUrl: '/taking-root/music/12 PM - Animal Crossing - Taking Root-0zbyDEqSfGQ.opus',
     meta: {
-      title: '2 PM - Animal Crossing - Taking Root',
+      title: '12 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
       backgroundStyle: 'linear-gradient(to bottom, #d9d7e5, #d5d4e4, #b97b75, #b94350)',
       backgroundTileImgUrl: '/taking-root/img/tile-cards.png',
@@ -232,18 +233,41 @@ const takingRootTimeline: HourlyTimeline = {
 const timelineManager = new TimelineManager(takingRootTimeline);
 const player = new AudioPlayer(timelineManager)
 const metaDisplay = new MetaDisplay(timelineManager)
+const timeDisplay = new TimeDisplay(timelineManager)
+
+type ConstructorOf<T> = {
+  new (...args: any[]): T
+}
+
+function assertElement<T extends HTMLElement>(
+    elementType: ConstructorOf<T>,
+    selector: string
+): T  {
+  const instance = document.querySelector(selector);
+  if (instance instanceof elementType) {
+    return instance
+  } else {
+    throw new Error(`Selector ${selector} was not a ${elementType.name}`)
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(
-    document.querySelector<HTMLDivElement>('#music-host')!
+    assertElement(HTMLDivElement, '#music-host'),
   );
 
   metaDisplay.register(
-    document.querySelector<HTMLElement>('#meta-music-title')!,
-    document.querySelector<HTMLImageElement>('#meta-banner-img')!,
-    document.querySelector<HTMLElement>('#meta-background')!,
-    document.querySelector<HTMLElement>('#meta-background-tile')!,
+    assertElement(HTMLElement, '#meta-music-title'),
+    assertElement(HTMLImageElement, '#meta-banner-img'),
+    assertElement(HTMLElement, '#meta-background'),
+    assertElement(HTMLElement, '#meta-background-tile'),
   );
+
+  timeDisplay.register(
+    assertElement(HTMLButtonElement, "#previous-hour-button"),
+    assertElement(HTMLButtonElement, "#next-hour-button"),
+  )
 
   // start the timeline
   timelineManager.start();
