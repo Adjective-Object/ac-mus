@@ -3,5 +3,9 @@ node_modules
 dist
 dist-ssr
 *.local
+# input files for the tiling images
 *.xcf
 spritesheet.png
+# audacity files and their internals
+*.aup
+taking-root/music/*_data/*
