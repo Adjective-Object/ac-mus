@@ -96,6 +96,16 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   10: {
+    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    meta: {
+      title: '8 PM - Animal Crossing - Taking Root',
+      bannerUrl: '/taking-root/img/default-banner.png',
+      backgroundStyle: 'linear-gradient(to bottom, #5a449d, #5a3e7a, #6e4c95)',
+      backgroundTileImgUrl: '/taking-root/img/tile-evening.png',
+      blendMode: 'transparent-soft'
+    }
+  },
+  10: {
     audioUrl: '/taking-root/music/10 AM - Animal Crossing - Taking Root-gbCQXFdWHVU.opus',
     meta: {
       title: '10 AM - Animal Crossing - Taking Root',
@@ -126,24 +136,15 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   13: {
-    audioUrl: '/taking-root/music/7 PM - Animal Crossing - Taking Root-oWL9TbzmY1o.opus',
+    audioUrl: '/taking-root/music/1 PM - Animal Crossing - Taking Root-DX2LKT7LyZc.opus',
     meta: {
-      title: '7 PM - Animal Crossing - Taking Root',
+      title: '1 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
-      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
-      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+      backgroundStyle: 'linear-gradient(to bottom, #caa685, #c9a786, #c2af8f, #bcb697, #9d9786, #837e78)',
+      backgroundTileImgUrl: '/taking-root/img/tile-bones.png',
+      blendMode: 'half-visible',
     }
   },
-  // 13: {
-  //   audioUrl: '/taking-root/music/1 PM - Animal Crossing - Taking Root-DX2LKT7LyZc.opus',
-  //   meta: {
-  //     title: '1 PM - Animal Crossing - Taking Root',
-  //     bannerUrl: '/taking-root/img/default-banner.png',
-  //     backgroundStyle: 'linear-gradient(to bottom, #caa685, #c9a786, #c2af8f, #bcb697, #9d9786, #837e78)',
-  //     backgroundTileImgUrl: '/taking-root/img/tile-bones.png',
-  //     blendMode: 'half-visible',
-  //   }
-  // },
   14: {
     audioUrl: '/taking-root/music/2 PM - Animal Crossing - Taking Root-PjGfsuEgF6g.opus',
     meta: {
@@ -199,8 +200,9 @@ const takingRootTimeline: HourlyTimeline = {
     meta: {
       title: '7 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
-      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
-      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+      backgroundStyle: 'linear-gradient(to bottom, #885ab2, #855a88, #8a5f85, #a16f9c)',
+      backgroundTileImgUrl: '/taking-root/img/tile-cards.png',
+      blendMode: 'gray-soft'
     }
   },
   20: {
@@ -208,8 +210,9 @@ const takingRootTimeline: HourlyTimeline = {
     meta: {
       title: '8 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
-      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
-      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+      backgroundStyle: 'linear-gradient(to bottom, #5a449d, #5a3e7a, #6e4c95)',
+      backgroundTileImgUrl: '/taking-root/img/tile-evening.png',
+      blendMode: 'transparent-soft'
     }
   },
   21: {
