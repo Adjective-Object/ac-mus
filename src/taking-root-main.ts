@@ -87,7 +87,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   9: {
-    audioUrl: '/taking-root/music/9 AM - Animal Crossing - Taking Root-ACquTCLlOIM.opus',
+    audioUrl: '/taking-root/music/9am-loop.ogg',
     meta: {
       title: '9 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -136,7 +136,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   13: {
-    audioUrl: '/taking-root/music/1 PM - Animal Crossing - Taking Root-DX2LKT7LyZc.opus',
+    audioUrl: '/taking-root/music/1pm-loop.ogg',
     meta: {
       title: '1 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',

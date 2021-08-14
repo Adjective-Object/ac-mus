@@ -17,6 +17,8 @@ export class AudioPlayer {
     public register(targetElement: HTMLElement): void {
         this._currentAudioElement = document.createElement('audio');
         this._preloadAudioElement = document.createElement('audio');
+        this._currentAudioElement.loop = true;
+        this._preloadAudioElement.loop = true;
         targetElement.appendChild(this._currentAudioElement);
         targetElement.appendChild(this._preloadAudioElement);
 
