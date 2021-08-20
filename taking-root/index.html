@@ -26,12 +26,14 @@
     <div id="song-meta" class="song-meta">
       <img src="" id="meta-banner-img" class="meta-banner-img"/>
       <div>
-        <button id="previous-hour-button">Previous Hour</button>
-        <h2 id="meta-music-title" class="meta-music-title"></h2>
-        <button id="next-hour-button">Next Hour</button>
+        <span id="meta-music-title" class="meta-music-title"></span>
       </div>
     </div>
-    <button id="play-pause-button" class="play-pause-button paused">Play</button>
+    <div class="controls-container">
+      <button id="previous-hour-button" class="media-button previous-hour back">Previous Hour</button>
+      <button id="play-pause-button" class="media-button play-pause-button play">Play</button>
+      <button id="next-hour-button" class="media-button next-hour next">Next Hour</button>  
+    </div>
   </div>
   <div id="music-host"></div>
   <script type="module" src="/src/taking-root-main.ts"></script>

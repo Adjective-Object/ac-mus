@@ -128,7 +128,6 @@ function resynchronizingTimer(targetTime: Date, cb: () => void): () => void {
     function resyncLoop() {
         var now = new Date();
         const timeUntilCb = targetTime.getTime() - now.getTime()
-        console.log('timeUntilCB:', timeUntilCb, targetTime, now)
         if (timeUntilCb <= 0) {
             cb()
         } else {

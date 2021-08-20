@@ -9,3 +9,4 @@ spritesheet.png
 # audacity files and their internals
 *.aup
 taking-root/music/*_data/*
+taking-root/music/*.opus

@@ -269,9 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
     assertElement(HTMLElement, '#meta-background-tile'),
   );
 
+  const prevHourButton = assertElement(HTMLButtonElement, "#previous-hour-button");
+  const nextHourButton = assertElement(HTMLButtonElement, "#next-hour-button");
   timeDisplay.register(
-    assertElement(HTMLButtonElement, "#previous-hour-button"),
-    assertElement(HTMLButtonElement, "#next-hour-button"),
+    prevHourButton,
+    nextHourButton,
   )
 
   // start the timeline
@@ -286,5 +288,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     playPauseButtonUI.innerHTML = player.isPlaying ? 'pause' : 'play'
+    playPauseButtonUI.classList.remove('play');
+    playPauseButtonUI.classList.remove('pause');
+    playPauseButtonUI.classList.add(player.isPlaying ? 'play' : 'pause');
   })
+
+
+  function bindButton(button: HTMLButtonElement, key: string, cb: () => void) {
+    let keyUpTimeout: number | null = null;
+
+    document.addEventListener('keyup', (e) => {
+      if (e.key === key) {
+        button.classList.remove('pressed');
+        if (keyUpTimeout !== null){
+          clearTimeout(keyUpTimeout);
+        }
+      }
+    });
+  
+    document.addEventListener('keydown', (e) => {
+      if (e.key === key) {
+        cb();
+  
+        button.classList.add('pressed');
+        keyUpTimeout = setTimeout(() => {
+          button.classList.remove('pressed');
+        }, 3000)
+      }
+    })
+  }
+
+  bindButton(
+    playPauseButtonUI, ' ', () => {
+      if (player.isPlaying) {
+        player.pause()
+      } else {
+        player.play()
+      }
+    }
+  )
+
+  bindButton(
+    prevHourButton, 'ArrowLeft', () => {
+      timelineManager.setHourOffset(timelineManager.hourOffset - 1)
+    }
+  )
+
+  bindButton(
+    nextHourButton, 'ArrowRight', () => {
+      timelineManager.setHourOffset(timelineManager.hourOffset + 1)
+    }
+  )
+
 })

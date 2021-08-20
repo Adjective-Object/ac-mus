@@ -9,17 +9,87 @@ body, html {
   height: 100%;
 }
 
+@font-face {
+  font-family: "Fink Heavy";
+  src: url("/common/font/FinkHeavy.woff") format("woff"),
+      url("/common/font/FinkHeavy.ttf") format("ttf");
+}
+
+body {
+  font-family: 'Fink Heavy';
+  color: #221111;
+}
 
 .visuals-host {
   max-width: 80%;
 }
 
-.song-meta {
-}
-
 .song-meta .meta-banner-img {
   max-width: 80%;
 }
+
+.meta-music-title {
+  display: block;
+  font-size: 32px;
+  margin: 12px;
+}
+
+.controls-container {
+  display:flex;
+}
+
+.media-button {
+  appearance: none;
+  border:none;
+
+  width:42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 0;
+  background-color: #8a592e;
+  filter: drop-shadow(3px 3px 0px #512b15);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 12px;
+
+  outline: none;
+  transition: transform 0.1s, filter 0.1s;
+}
+
+.media-button:active, .media-button.pressed {
+  transform: translate(2px,2px);
+  filter: drop-shadow(1px 1px 0px #512b15);
+}
+
+.media-button::before {
+  filter: drop-shadow(2px 2px 0px #512b15);
+}
+
+.media-button.play::before {
+  content: url('/common/svg/play.svg');
+  width: 50%;
+}
+.media-button.pause::before {
+  content: url('/common/svg/pause.svg');
+  width: 50%;
+}
+.media-button.back::before {
+  content: url('/common/svg/backward.svg');
+  width: 60%;
+  position:relative;
+  right: 4%;
+}
+.media-button.next::before {
+  content: url('/common/svg/forward.svg');
+  width: 60%;
+  position:relative;
+  left: 4%;
+}
+
 
 .app-container {
   width: 100%;
@@ -62,6 +132,8 @@ body, html {
 }
 
 .meta-background-tile {
+  will-change: background-position;
+
   background-size: 256px 256px;
   animation-name: background-scroll-diagonal;
   animation-duration: 21s;
