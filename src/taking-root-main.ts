@@ -208,10 +208,11 @@ const takingRootTimeline: HourlyTimeline = {
   21: {
     audioUrl: '/taking-root/music/9pm-loop.ogg',
     meta: {
-      title: '(waiting for track for 21:00)',
+      title: '9 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
-      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
-      backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
+      backgroundStyle: 'linear-gradient(to bottom, #353393, #241b4d)',
+      backgroundTileImgUrl: '/taking-root/img/tile-latenight.png',
+      blendMode: 'transparent-soft'
     }
   },
   22: {
@@ -219,7 +220,7 @@ const takingRootTimeline: HourlyTimeline = {
     meta: {
       title: '(waiting for track for 22:00)',
       bannerUrl: '/taking-root/img/default-banner.png',
-      backgroundStyle: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      backgroundStyle: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
       backgroundTileImgUrl: '/taking-root/img/tile-leaf.png',
     }
   },
