@@ -60,7 +60,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   6: {
-    audioUrl: '/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus',
+    audioUrl: '/taking-root/music/6am-loop.ogg',
     meta: {
       title: '6 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -69,7 +69,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   7: {
-    audioUrl: '/taking-root/music/7 AM - Animal Crossing - Taking Root--EvbkIEPyf4.opus',
+    audioUrl: '/taking-root/music/7am-loop.ogg',
     meta: {
       title: '7 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -78,7 +78,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   8: {
-    audioUrl: '/taking-root/music/8 AM - Animal Crossing - Taking Root-grn83Yt38qY.opus',
+    audioUrl: '/taking-root/music/8am-loop.ogg',
     meta: {
       title: '8 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -96,17 +96,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   10: {
-    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
-    meta: {
-      title: '8 PM - Animal Crossing - Taking Root',
-      bannerUrl: '/taking-root/img/default-banner.png',
-      backgroundStyle: 'linear-gradient(to bottom, #5a449d, #5a3e7a, #6e4c95)',
-      backgroundTileImgUrl: '/taking-root/img/tile-evening.png',
-      blendMode: 'transparent-soft'
-    }
-  },
-  10: {
-    audioUrl: '/taking-root/music/10 AM - Animal Crossing - Taking Root-gbCQXFdWHVU.opus',
+    audioUrl: '/taking-root/music/10am-loop.ogg',
     meta: {
       title: '10 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -116,7 +106,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   11: {
-    audioUrl: '/taking-root/music/11 AM - Animal Crossing - Taking Root-YAAZCej0G-U.opus',
+    audioUrl: '/taking-root/music/11am-loop.ogg',
     meta: {
       title: '11 AM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -126,7 +116,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   12: {
-    audioUrl: '/taking-root/music/12 PM - Animal Crossing - Taking Root-0zbyDEqSfGQ.opus',
+    audioUrl: '/taking-root/music/12pm-loop.ogg',
     meta: {
       title: '12 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -146,7 +136,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   14: {
-    audioUrl: '/taking-root/music/2 PM - Animal Crossing - Taking Root-PjGfsuEgF6g.opus',
+    audioUrl: '/taking-root/music/2pm-loop.ogg',
     meta: {
       title: '2 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -156,7 +146,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   15: {
-    audioUrl: '/taking-root/music/3 PM - Animal Crossing - Taking Root-AA_pu-2Omtg.opus',
+    audioUrl: '/taking-root/music/3pm-loop.ogg',
     meta: {
       title: '3 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -166,7 +156,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   16: {
-    audioUrl: '/taking-root/music/4 PM - Animal Crossing - Taking Root-2QGxavJrkHQ.opus',
+    audioUrl: '/taking-root/music/4pm-loop.ogg',
     meta: {
       title: '4 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -176,7 +166,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   17: {
-    audioUrl: '/taking-root/music/5 PM - Animal Crossing - Taking Root (feat. rud)-IV9N_Lr61QY.opus',
+    audioUrl: '/taking-root/music/5pm-loop.ogg',
     meta: {
       title: '5 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -186,7 +176,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   18: {
-    audioUrl: '/taking-root/music/6 PM - Animal Crossing - Taking Root-66drz4evPZk.opus',
+    audioUrl: '/taking-root/music/6pm-loop.ogg',
     meta: {
       title: '6 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -196,7 +186,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   19: {
-    audioUrl: '/taking-root/music/7 PM - Animal Crossing - Taking Root-oWL9TbzmY1o.opus',
+    audioUrl: '/taking-root/music/7pm-loop.ogg',
     meta: {
       title: '7 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -206,7 +196,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   20: {
-    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    audioUrl: '/taking-root/music/8pm-loop.ogg',
     meta: {
       title: '8 PM - Animal Crossing - Taking Root',
       bannerUrl: '/taking-root/img/default-banner.png',
@@ -216,7 +206,7 @@ const takingRootTimeline: HourlyTimeline = {
     }
   },
   21: {
-    audioUrl: '/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm',
+    audioUrl: '/taking-root/music/9pm-loop.ogg',
     meta: {
       title: '(waiting for track for 21:00)',
       bannerUrl: '/taking-root/img/default-banner.png',
