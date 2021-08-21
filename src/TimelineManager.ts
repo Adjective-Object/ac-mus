@@ -10,12 +10,18 @@ const addHour = (hr: Hour, offset: number = 1) : Hour => {
 
 export type HourlyTimeline = Record<Hour, MusicTrack>
 
+export type Artist = {
+    name: string,
+    profileUrl: string,
+}
+
 export type MusicMeta = {
     title: string,
     bannerUrl: string,
     backgroundStyle: string,
     backgroundTileImgUrl: string,
-    blendMode?: 'gray-soft' | 'default' | 'half-visible' | 'transparent-soft'
+    blendMode?: 'gray-soft' | 'default' | 'half-visible' | 'transparent-soft',
+    by?: Artist[],
 }
 
 export type MusicTrack = {
@@ -78,7 +84,7 @@ export class TimelineManager {
             try {
                 cb(currentTrackInfo)
             } catch (e) {
-                console.error( e instanceof Error ? e.stack : e)
+                setTimeout(() => {throw e}, 0)
             }
         }
 

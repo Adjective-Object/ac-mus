@@ -5,6 +5,7 @@ export class MetaDisplay {
     private _backgroundElement: HTMLElement | undefined;
     private _backgroundTileElement: HTMLElement | undefined;
     private _bannerImgElement: HTMLImageElement | undefined;
+    private _artistContainer: HTMLElement | undefined;
 
     constructor(private _timelineManager: TimelineManager) {
     }
@@ -14,6 +15,7 @@ export class MetaDisplay {
         bannerImgElement: HTMLImageElement,
         backgroundElement: HTMLElement,
         backgroundTileElement: HTMLElement,
+        artistCon_artistContainer: HTMLElement,
     ) {
         this._timelineManager.registerTimelineCallback(
             this._onTrackUpdated.bind(this)
@@ -23,6 +25,7 @@ export class MetaDisplay {
         this._bannerImgElement = bannerImgElement
         this._backgroundElement = backgroundElement;
         this._backgroundTileElement = backgroundTileElement;
+        this._artistContainer = artistCon_artistContainer;
     }
 
     private _onTrackUpdated({currentTrack: {meta}}: CurrentTrackInfo): void {
@@ -42,8 +45,31 @@ export class MetaDisplay {
         if (meta?.backgroundTileImgUrl) {
             this._backgroundTileElement.style.backgroundImage = `url('${meta.backgroundTileImgUrl}')`;
         }
+
+        if (meta?.by && this._artistContainer) {
+            while(this._artistContainer.childNodes.length) {
+                this._artistContainer?.removeChild(this._artistContainer.childNodes[0])
+            }
+            const artistLinks = meta.by.map(by => {
+                const link = document.createElement('a');
+                link.textContent = by.name;
+                link.href = by.profileUrl;
+                return link
+            })
+            let currentArtist: HTMLAnchorElement | undefined;
+            while (currentArtist = artistLinks.shift()) {
+                this._artistContainer.appendChild(currentArtist);
+                if (artistLinks.length && meta.by.length > 2) {
+                    this._artistContainer.appendChild(document.createTextNode(", "))
+                }
+                if (artistLinks.length == 1) {
+                    this._artistContainer.appendChild(document.createTextNode(" and "))
+                }
+            }
+            this._backgroundTileElement.style.backgroundImage = `url('${meta.backgroundTileImgUrl}')`;
+        }
  
-        const blendMode = meta?.blendMode || 'default'
+ 
         // TODO this container should be DI'd as well.
         const backgroundContainer = this._backgroundTileElement.parentElement;
         if (backgroundContainer) {
