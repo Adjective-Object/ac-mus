@@ -431,7 +431,9 @@ function assertElement<T extends HTMLElement>(
 document.addEventListener("DOMContentLoaded", () => {
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(assertElement(HTMLDivElement, "#music-host"));
-  backgroundDoubleBuffer.register(assertElement(HTMLDivElement, "#backgrounds-host"))
+  backgroundDoubleBuffer.register(
+    assertElement(HTMLDivElement, "#backgrounds-host")
+  );
 
   metaDisplay.register(
     assertElement(HTMLElement, "#meta-music-title"),
@@ -451,25 +453,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const playPauseButtonUI =
     document.querySelector<HTMLButtonElement>("#play-pause-button")!;
-  playPauseButtonUI.addEventListener("click", () => {
+
+  function pausePlay() {
     if (player.isPlaying) {
       player.pause();
     } else {
       player.play();
     }
 
-    playPauseButtonUI.innerHTML = player.isPlaying ? "pause" : "play";
     playPauseButtonUI.classList.remove("play");
     playPauseButtonUI.classList.remove("pause");
-    playPauseButtonUI.classList.add(player.isPlaying ? "play" : "pause");
+    playPauseButtonUI.innerHTML = player.isPlaying ? "Pause" : "Play";
+    playPauseButtonUI.classList.add(player.isPlaying ? "pause" : "play");
+  }
+
+  playPauseButtonUI.addEventListener("click", () => {
+    pausePlay();
   });
 
-  function bindButton(button: HTMLButtonElement, key: string | string[], cb: () => void) {
+  function bindButton(
+    button: HTMLButtonElement,
+    key: string | string[],
+    cb: () => void
+  ) {
     let keyUpTimeout: number | null = null;
-    let listenToKeys: string[] = Array.isArray(key) ? key : [key]
+    let listenToKeys: string[] = Array.isArray(key) ? key : [key];
 
     document.addEventListener("keyup", (e) => {
-      if (listenToKeys.some(k => e.key === k)) {
+      if (listenToKeys.some((k) => e.key === k)) {
         button.classList.remove("pressed");
         if (keyUpTimeout !== null) {
           clearTimeout(keyUpTimeout);
@@ -478,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (listenToKeys.some(k => e.key === k)) {
+      if (listenToKeys.some((k) => e.key === k)) {
         cb();
 
         button.classList.add("pressed");
@@ -490,18 +501,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   bindButton(playPauseButtonUI, " ", () => {
-    if (player.isPlaying) {
-      player.pause();
-    } else {
-      player.play();
-    }
+    pausePlay();
   });
 
-  bindButton(prevHourButton, ["ArrowLeft", 'a'], () => {
+  bindButton(prevHourButton, ["ArrowLeft", "a"], () => {
     timelineManager.setHourOffset(timelineManager.hourOffset - 1);
   });
 
-  bindButton(nextHourButton, ["ArrowRight", 'd'], () => {
+  bindButton(nextHourButton, ["ArrowRight", "d"], () => {
     timelineManager.setHourOffset(timelineManager.hourOffset + 1);
   });
 });
