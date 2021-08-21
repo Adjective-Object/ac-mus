@@ -1,13 +1,42 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Taking Root</title>
+  <meta name="description" content="24/7 Taking Root Radio">
+  <meta name="author" content="adjective-object">
+
+  <meta property="og:title" content="24/7 Taking Root Radio">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://ac.yzke.com">
+  <meta property="og:description" content="A website for listening to hourly music">
+  <meta property="og:image" content="img/og-img.jpg">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.png" type="image/png">
+
+  <link rel="preload" href="/common/svg/pause.svg" as="image" type="image/svg+xml">
+</head>
+<body id="meta-background" class="app-container">
+  <div id="backgrounds-host" class="backgrounds-host">
+  </div>
+
+  <div id="visuals-host" class="visuals-host">
+    <div id="song-meta" class="song-meta">
+      <img src="" id="meta-banner-img" class="meta-banner-img"/>
+      <div>
+        <span id="meta-music-title" class="meta-music-title"></span>
+        <span id="meta-artist-container" class="meta-artist-container"></span>
+      </div>
+    </div>
+    <div class="controls-container">
+      <button id="previous-hour-button" class="media-button previous-hour back">Previous Hour</button>
+      <button id="play-pause-button" class="media-button play-pause-button play">Play</button>
+      <button id="next-hour-button" class="media-button next-hour next">Next Hour</button>  
+    </div>
+  </div>
+  <div id="music-host"></div>
+  <script type="module" src="/src/taking-root-main.ts"></script>
+</body>
 </html>
