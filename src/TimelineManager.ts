@@ -21,6 +21,7 @@ export type MusicMeta = {
     backgroundStyle: string,
     backgroundTileImgUrl: string,
     blendMode?: 'gray-soft' | 'default' | 'half-visible' | 'transparent-soft',
+    darkLight?: 'dark' | 'light',
     by?: Artist[],
 }
 

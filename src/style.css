@@ -32,13 +32,30 @@ body {
   display: block;
   font-size: 32px;
   margin: 12px 12px 4px 12px;
+
+  filter: drop-shadow(3px 3px 0px rgba(204,204,204, 0.7));
 }
+
+.darkmode .meta-music-title {
+  color: #d8cfcd;
+  filter: drop-shadow(3px 3px 0px #512b15);
+}
+
+
 
 .meta-artist-container {
   display: block;
   text-align: center;
   height: 20px;
   line-height: 20px;
+}
+
+.meta-artist-container a {
+  color: #082043
+}
+
+.darkmode .meta-artist-container a {
+  color: #c3b241
 }
 
 .controls-container {

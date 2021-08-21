@@ -279,7 +279,7 @@ const takingRootTimeline: HourlyTimeline = {
       title: "4 PM - Animal Crossing - Taking Root",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, #5b4867, #7a597e, #b3a5bd, #b3a5bd)",
+        "linear-gradient(to top, #7a597e, #b3a5bd, #b3a5bd)",
       backgroundTileImgUrl: "/taking-root/img/tile-rich-purple.png",
       blendMode: "half-visible",
     },
@@ -352,6 +352,7 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundStyle: "linear-gradient(to bottom, #5a449d, #5a3e7a, #6e4c95)",
       backgroundTileImgUrl: "/taking-root/img/tile-evening.png",
       blendMode: "transparent-soft",
+      darkLight: "dark",
     },
   },
   21: {
@@ -368,6 +369,7 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-latenight.png",
       blendMode: "transparent-soft",
+      darkLight: "dark",
     },
   },
   22: {
@@ -436,6 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   metaDisplay.register(
+    assertElement(HTMLElement, "#song-meta"),
     assertElement(HTMLElement, "#meta-music-title"),
     assertElement(HTMLImageElement, "#meta-banner-img"),
     assertElement(HTMLElement, "#meta-artist-container")
