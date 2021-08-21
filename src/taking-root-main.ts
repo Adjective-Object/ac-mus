@@ -3,6 +3,7 @@ import { AudioPlayer } from "./AudioPlayer";
 import { HourlyTimeline, TimelineManager } from "./TimelineManager";
 import { MetaDisplay } from "./MetaDisplay";
 import { TimeDisplay } from "./TimeDisplay";
+import { BackgroundDoubleBuffer } from "./BackgroundDobuleBuffer";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
@@ -409,6 +410,7 @@ const timelineManager = new TimelineManager(takingRootTimeline);
 const player = new AudioPlayer(timelineManager);
 const metaDisplay = new MetaDisplay(timelineManager);
 const timeDisplay = new TimeDisplay(timelineManager);
+const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
 
 type ConstructorOf<T> = {
   new (...args: any[]): T;
@@ -429,12 +431,11 @@ function assertElement<T extends HTMLElement>(
 document.addEventListener("DOMContentLoaded", () => {
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(assertElement(HTMLDivElement, "#music-host"));
+  backgroundDoubleBuffer.register(assertElement(HTMLDivElement, "#backgrounds-host"))
 
   metaDisplay.register(
     assertElement(HTMLElement, "#meta-music-title"),
     assertElement(HTMLImageElement, "#meta-banner-img"),
-    assertElement(HTMLElement, "#meta-background"),
-    assertElement(HTMLElement, "#meta-background-tile"),
     assertElement(HTMLElement, "#meta-artist-container")
   );
 

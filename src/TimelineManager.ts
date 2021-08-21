@@ -1,10 +1,10 @@
-type Hour = 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23
+export type Hour = 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23
 
 const isHour = (hr: number): hr is Hour => {
     return hr >= 0 && hr < 24 && (hr - Math.round(hr) == 0)
 }
 
-const addHour = (hr: Hour, offset: number = 1) : Hour => {
+export const addHour = (hr: Hour, offset: number = 1) : Hour => {
     return (hr + 24 + offset) % 24 as Hour
 }
 
@@ -29,9 +29,12 @@ export type MusicTrack = {
     meta: MusicMeta
 }
 
+export type ActiveMusicTrack = MusicTrack & {timelinePosition: Hour}
+
 export type CurrentTrackInfo = {
-    currentTrack: MusicTrack,
-    nextTrack: MusicTrack
+    previousTrack: ActiveMusicTrack,
+    currentTrack: ActiveMusicTrack,
+    nextTrack: ActiveMusicTrack,
 }
 
 export class TimelineManager {
@@ -51,18 +54,24 @@ export class TimelineManager {
         this._advanceTrack(new Date())
     }
 
-    public getTrackForTime(now: Date): {
-        currentTrack: MusicTrack
-        nextTrack: MusicTrack
-    } {
+    public getTrackForTime(now: Date): CurrentTrackInfo {
         const hr = now.getHours()
         if (!isHour(hr)) {
             throw new Error('got illegal hour from date!')
         }
         const hrWithOffset = addHour(hr, this._hourOffset)
         return {
-            currentTrack: this._hourlyTimeline[hrWithOffset],
-            nextTrack: this._hourlyTimeline[addHour(hrWithOffset)],
+            previousTrack: this._getFromHourlyTimeline(hrWithOffset, -1),
+            currentTrack: this._getFromHourlyTimeline(hrWithOffset, 0),
+            nextTrack: this._getFromHourlyTimeline(hrWithOffset, 1),
+        }
+    }
+
+    private _getFromHourlyTimeline(hr: Hour, offset: number): MusicTrack & {timelinePosition: Hour} {
+        const offsetHr = addHour(hr, offset);
+        return {
+            ...(this._hourlyTimeline[offsetHr]),
+            timelinePosition: offsetHr,
         }
     }
 
@@ -79,7 +88,6 @@ export class TimelineManager {
      */
      private _advanceTrack(now: Date) {
         const currentTrackInfo = this.getTrackForTime(now)
-        console.log('notify', currentTrackInfo)
         for (let cb of this._callbacks) {
             try {
                 cb(currentTrackInfo)
@@ -101,8 +109,6 @@ export class TimelineManager {
             now.getDate() + 1,
             0
         );
-
-        console.log('next hour:', nextHour)
 
         this._cancelTimer = resynchronizingTimer(
             nextHour,
