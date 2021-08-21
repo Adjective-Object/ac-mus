@@ -18,7 +18,7 @@ type BackgroundElementsAndState = {
   assignedToTimelinePosition?: Hour;
 };
 
-const CONTAINER_BUFFER_SIZE = 4;
+const CONTAINER_BUFFER_SIZE = 6;
 
 function createBackground(): BackgroundContainerElements {
   const backgroundElement = document.createElement("div");
