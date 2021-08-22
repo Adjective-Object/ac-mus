@@ -8,7 +8,7 @@ import { BackgroundDoubleBuffer } from "./BackgroundDobuleBuffer";
 const takingRootTimeline: HourlyTimeline = {
   0: {
     audioUrl:
-      "/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus",
+      "/taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -19,13 +19,14 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 00:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
+      darkLight: 'dark'
     },
   },
   1: {
     audioUrl:
-      "/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus",
+      "/taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -36,13 +37,14 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 01:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
-    },
+      darkLight: 'dark'
+     },
   },
   2: {
     audioUrl:
-      "/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus",
+      "/taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -53,13 +55,14 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 02:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
+      darkLight: 'dark'
     },
   },
   3: {
     audioUrl:
-      "/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus",
+      "/taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -70,13 +73,14 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 03:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
+      darkLight: 'dark'
     },
   },
   4: {
     audioUrl:
-      "/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus",
+      "/taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -87,13 +91,14 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 04:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
+      darkLight: 'dark'
     },
   },
   5: {
     audioUrl:
-      "/taking-root/music/6 AM - Animal Crossing - Taking Root-f8pYxhDEgfg.opus",
+      "/taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -104,7 +109,7 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 05:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #d7561d, #faeec1)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
     },
   },
@@ -374,7 +379,7 @@ const takingRootTimeline: HourlyTimeline = {
   },
   22: {
     audioUrl:
-      "/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm",
+      "/taking-root/music/9pm-loop.ogg",
     meta: {
       by: [
         {
@@ -385,13 +390,14 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 22:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
+      darkLight: 'dark'
     },
   },
   23: {
     audioUrl:
-      "/taking-root/music/8 PM - Animal Crossing - Taking Root-j93RsBBPG5E.webm",
+      "/taking-root/music/9pm-loop.ogg",
     meta: {
       by: [
         {
@@ -402,8 +408,9 @@ const takingRootTimeline: HourlyTimeline = {
       title: "(waiting for track for 23:00)",
       bannerUrl: "/taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
+        "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "/taking-root/img/tile-leaf.png",
+      darkLight: 'dark'
     },
   },
 };
