@@ -34,7 +34,9 @@
         <img id="meta-banner-img" class="meta-banner-img" />
         <div>
           <span id="meta-music-title" class="meta-music-title"></span>
-          <span id="meta-artist-container" class="meta-artist-container"></span>
+          <span class="artist-container">
+            By <span id="meta-artist-container"></span>
+          </span>
         </div>
       </div>
       <div class="controls-container">
@@ -53,12 +55,15 @@
         <button id="next-hour-button" class="media-button next-hour next">
           Next Hour
         </button>
+        <div class="bottom-ui">
+          <a href="https://scruffymusic.bandcamp.com/album/animal-crossing-taking-root-2">Buy the album</a>
+        </div>
       </div>
     </div>
     <div id="music-host"></div>
     <script type="module" src="/src/taking-root-main.ts"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
+    <!-- <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-M7PT6PTH10"
     ></script>
@@ -70,6 +75,6 @@
       gtag("js", new Date());
 
       gtag("config", "G-M7PT6PTH10");
-    </script>
+    </script> -->
   </body>
 </html>

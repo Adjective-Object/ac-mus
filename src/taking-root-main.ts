@@ -16,7 +16,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 00:00)",
+      title: "(track 00:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -34,7 +34,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 01:00)",
+      title: "(track 01:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -52,7 +52,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 02:00)",
+      title: "(track 02:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -70,7 +70,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 03:00)",
+      title: "(track 03:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -88,7 +88,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 04:00)",
+      title: "(track 04:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -106,7 +106,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 05:00)",
+      title: "(track 05:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #d7561d, #faeec1)",
@@ -388,7 +388,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 22:00)",
+      title: "(track 22:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -406,7 +406,7 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(waiting for track for 23:00)",
+      title: "(track 23:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
         "linear-gradient(to bottom, #353393, #241b4d)",
@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   metaDisplay.register(
-    assertElement(HTMLElement, "#song-meta"),
+    assertElement(HTMLElement, 'body'),
     assertElement(HTMLElement, "#meta-music-title"),
     assertElement(HTMLImageElement, "#meta-banner-img"),
     assertElement(HTMLElement, "#meta-artist-container")

@@ -21,20 +21,20 @@ body {
 }
 
 .visuals-host {
-  max-width: 80%;
+  max-width: 75%;
 }
 
 .song-meta .meta-banner-img {
-  max-width: 80%;
+  max-width: 75%;
 }
 
 .meta-music-title {
   display: block;
-  font-size: min(32px, 4vw);
-  white-space: nowrap;
+  font-size: 32px;
+  max-width: 100%;
   line-break: none;
-  margin: 12px 12px 4px 12px;
-
+  padding: 0.25em 1em 0.5em 1em;
+  text-align: center;
   filter: drop-shadow(3px 3px 0px rgba(204,204,204, 0.7));
 }
 
@@ -45,18 +45,18 @@ body {
 
 
 
-.meta-artist-container {
+.artist-container {
   display: block;
   text-align: center;
   height: 20px;
   line-height: 20px;
 }
 
-.meta-artist-container a {
+a {
   color: #082043
 }
 
-.darkmode .meta-artist-container a {
+.darkmode a {
   color: #c3b241
 }
 
@@ -128,6 +128,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .background-tile-mask {
@@ -188,4 +189,11 @@ body {
   to {
     background-position: 256px 256px;
   }
+}
+
+.bottom-ui {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.5em;
 }
