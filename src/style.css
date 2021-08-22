@@ -30,7 +30,9 @@ body {
 
 .meta-music-title {
   display: block;
-  font-size: 32px;
+  font-size: min(32px, 4vw);
+  white-space: nowrap;
+  line-break: none;
   margin: 12px 12px 4px 12px;
 
   filter: drop-shadow(3px 3px 0px rgba(204,204,204, 0.7));
