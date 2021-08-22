@@ -17,9 +17,8 @@ requires git-subtree (`sudo dnf install git-subtree` on fedora)
 
 ```sh
 git co -b deploy
-rm .gitignore
 yarn build
-git add dist
+git add dist -f
 git commit -m "Initial dist subtree commit"
 git subtree split --prefix dist -b gh-pages # create a local gh-pages branch
 git push --force origin gh-pages:gh-pages
