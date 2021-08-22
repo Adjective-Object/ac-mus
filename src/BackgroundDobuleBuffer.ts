@@ -58,7 +58,7 @@ function updateBackgroundToMeta(
     }
   }
 
-  backgroundElements.tileMaskElement.classList.add(meta.blendMode + "-blend");
+  backgroundElements.tileMaskElement.classList.add((meta.blendMode || 'default') + "-blend");
 }
 
 export class BackgroundDoubleBuffer {

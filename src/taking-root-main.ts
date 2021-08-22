@@ -156,6 +156,7 @@ const takingRootTimeline: HourlyTimeline = {
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle: "linear-gradient(to bottom, #67d0e7, #6fc4d5, #2b627f)",
       backgroundTileImgUrl: "./taking-root/img/tile-garden.png",
+      blendMode: 'default',
     },
   },
   9: {

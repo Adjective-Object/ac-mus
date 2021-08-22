@@ -133,6 +133,10 @@ body {
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.76));
 }
 
+.default-blend {
+  filter: opacity(0.7);
+}
+
 .half-visible-blend {
   filter: opacity(0.2);
   mix-blend-mode: hard-light;
