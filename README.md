@@ -16,9 +16,13 @@ yarn build
 requires git-subtree (`sudo dnf install git-subtree` on fedora)
 
 ```sh
-git co -b dist
+git co -b deploy
 rm .gitignore
+yarn build
 git add dist
 git commit -m "Initial dist subtree commit"
-git subtree push --prefix dist origin gh-pages
+git subtree split --prefix dist -b gh-pages # create a local gh-pages branch
+git push --force origin gh-pages:gh-pages
+git co main
+git branch -D deploy gh-pages
 ```
