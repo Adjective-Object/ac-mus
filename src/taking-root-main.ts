@@ -504,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (listenToKeys.some((k) => e.key === k)) {
+      if (!(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLButtonElement) &&  listenToKeys.some((k) => e.key === k)) {
         cb();
 
         button.classList.add("pressed");
