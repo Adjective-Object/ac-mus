@@ -4,6 +4,7 @@ import { HourlyTimeline, TimelineManager } from "./TimelineManager";
 import { MetaDisplay } from "./MetaDisplay";
 import { TimeDisplay } from "./TimeDisplay";
 import { BackgroundDoubleBuffer } from "./BackgroundDobuleBuffer";
+import { VolumeSlider } from "./VolumeSlider";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
@@ -417,7 +418,8 @@ const takingRootTimeline: HourlyTimeline = {
 };
 
 const timelineManager = new TimelineManager(takingRootTimeline);
-const player = new AudioPlayer(timelineManager);
+const volumeSlider = new VolumeSlider(0.8);
+const player = new AudioPlayer(timelineManager, volumeSlider);
 const metaDisplay = new MetaDisplay(timelineManager);
 const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
@@ -458,6 +460,8 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const nextHourButton = assertElement(HTMLButtonElement, "#next-hour-button");
   timeDisplay.register(prevHourButton, nextHourButton);
+
+  volumeSlider.register(assertElement(HTMLInputElement, '#volume-slider'))
 
   // start the timeline
   timelineManager.start();

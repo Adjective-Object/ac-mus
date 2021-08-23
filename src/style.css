@@ -1,10 +1,15 @@
-body, html, *, *:after, *:before {
+body,
+html,
+*,
+*:after,
+*:before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body, html {
+body,
+html {
   width: 100%;
   height: 100%;
 }
@@ -12,11 +17,11 @@ body, html {
 @font-face {
   font-family: "Fink Heavy";
   src: url("/common/font/FinkHeavy.woff") format("woff"),
-      url("/common/font/FinkHeavy.ttf") format("ttf");
+    url("/common/font/FinkHeavy.ttf") format("ttf");
 }
 
 body {
-  font-family: 'Fink Heavy';
+  font-family: "Fink Heavy";
   color: #221111;
 }
 
@@ -39,15 +44,13 @@ body {
   line-break: none;
   padding: 0.25em 1em 0.5em 1em;
   text-align: center;
-  filter: drop-shadow(3px 3px 0px rgba(204,204,204, 0.7));
+  filter: drop-shadow(3px 3px 0px rgba(204, 204, 204, 0.7));
 }
 
 .darkmode .meta-music-title {
   color: #d8cfcd;
   filter: drop-shadow(3px 3px 0px #512b15);
 }
-
-
 
 .artist-container {
   display: block;
@@ -57,22 +60,22 @@ body {
 }
 
 a {
-  color: #082043
+  color: #082043;
 }
 
 .darkmode a {
-  color: #c3b241
+  color: #c3b241;
 }
 
 .controls-container {
-  display:flex;
+  display: flex;
 }
 
 .media-button {
   appearance: none;
-  border:none;
+  border: none;
 
-  width:42px;
+  width: 42px;
   height: 42px;
   border-radius: 50%;
   font-size: 0;
@@ -90,8 +93,9 @@ a {
   transition: transform 0.1s, filter 0.1s;
 }
 
-.media-button:active, .media-button.pressed {
-  transform: translate(2px,2px);
+.media-button:active,
+.media-button.pressed {
+  transform: translate(2px, 2px);
   filter: drop-shadow(1px 1px 0px #512b15);
 }
 
@@ -100,26 +104,25 @@ a {
 }
 
 .media-button.play::before {
-  content: url('/common/svg/play.svg');
+  content: url("/common/svg/play.svg");
   width: 50%;
 }
 .media-button.pause::before {
-  content: url('/common/svg/pause.svg');
+  content: url("/common/svg/pause.svg");
   width: 50%;
 }
 .media-button.back::before {
-  content: url('/common/svg/backward.svg');
+  content: url("/common/svg/backward.svg");
   width: 60%;
-  position:relative;
+  position: relative;
   right: 4%;
 }
 .media-button.next::before {
-  content: url('/common/svg/forward.svg');
+  content: url("/common/svg/forward.svg");
   width: 60%;
-  position:relative;
+  position: relative;
   left: 4%;
 }
-
 
 .app-container {
   width: 100%;
@@ -127,7 +130,9 @@ a {
   overflow: hidden;
 }
 
-.app-container, .visuals-host, .song-meta {
+.app-container,
+.visuals-host,
+.song-meta {
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -136,7 +141,11 @@ a {
 }
 
 .background-tile-mask {
-  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.76));
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.76)
+  );
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.76));
 }
 
@@ -159,7 +168,10 @@ a {
   mix-blend-mode: soft-light;
 }
 
-.background, .background-tile-mask, .background-tile, .backgrounds-host {
+.background,
+.background-tile-mask,
+.background-tile,
+.backgrounds-host {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -168,12 +180,11 @@ a {
 }
 
 .background:not(.active) {
-  opacity:0 
+  opacity: 0;
 }
 
-
 .background.active {
-  opacity:1 
+  opacity: 1;
 }
 
 .background-tile {
@@ -200,4 +211,141 @@ a {
   bottom: 0;
   left: 0;
   padding: 0.5em;
+  width: 100%;
+  justify-content: space-between;
+
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider {
+  appearance: none;
+  background-color: inherit;
+  flex-shrink: 1;
+  width: 6em;
+  margin: 0.25em;
+
+  opacity: 1;
+  transition: opacity 0.15s;
+}
+
+.volume-slider-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #8a592e;
+  filter: drop-shadow(3px 3px 0px #512b15);
+  height: 2em;
+  padding: 0.5em;
+  border-radius: 1em;
+
+  overflow: hidden;
+  transition: width 0.15s;
+  width: 9em;
+}
+
+/* THUMB STYLES */
+
+/* Special styling for WebKit/Blink */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  filter: drop-shadow(3px 3px 0px #512b15);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background: #c3b241;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type="range"]::-moz-range-thumb {
+  filter: drop-shadow(3px 3px 0px #512b15);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background: #c3b241;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type="range"]::-ms-thumb {
+  filter: drop-shadow(3px 3px 0px #512b15);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background: #c3b241;
+  cursor: pointer;
+}
+
+/* TRACK STYLES */
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #512b15;
+  border-radius: 1.3px;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #512b15;
+  border-radius: 1.3px;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #2a6495;
+  border-radius: 2.6px;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #512b15;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #512b15;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+.volume-slider-container:not(:hover, :focus-within) {
+  width: 2em;
+}
+
+.volume-slider-container:not(:hover, :focus-within) .volume-slider {
+  opacity: 0;
+}
+
+.volume-slider-container::before,
+.volume-slider-container::after {
+  margin: 0.2em;
+  flex-shrink: 0;
+}
+
+.volume-slider-container::before {
+  content: url("/common/svg/volume-down.svg");
+  width: 0.75em;
+}
+
+.volume-slider-container::after {
+  display: inline-block;
+  content: url("/common/svg/volume-up.svg");
+  width: 1em;
 }
