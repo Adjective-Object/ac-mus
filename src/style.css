@@ -20,6 +20,10 @@ body {
   color: #221111;
 }
 
+.darkmode {
+  color: #d8cfcd;
+}
+
 .visuals-host {
   max-width: 75%;
 }
