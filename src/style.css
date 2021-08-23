@@ -93,6 +93,10 @@ a {
   transition: transform 0.1s, filter 0.1s;
 }
 
+.media-button:focus {
+  outline: 3px solid #c3b241;
+}
+
 .media-button:active,
 .media-button.pressed {
   transform: translate(2px, 2px);
@@ -280,6 +284,11 @@ input[type="range"]::-ms-thumb {
 
 /* TRACK STYLES */
 
+
+input[type="range"]:focus {
+  outline: none;
+}
+
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
@@ -299,6 +308,17 @@ input[type="range"]::-moz-range-track {
   background: #512b15;
   border-radius: 1.3px;
 }
+
+
+input[type="range"]:focus::-moz-range-track {
+  outline: 2px solid #c3b241;
+}
+
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  outline: 2px solid #c3b241;
+}
+
 
 input[type="range"]::-ms-track {
   width: 100%;
