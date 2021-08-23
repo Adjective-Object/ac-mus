@@ -469,17 +469,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const playPauseButtonUI =
     document.querySelector<HTMLButtonElement>("#play-pause-button")!;
 
+  player.registerPlayPauseCallback((isPlaying: boolean) => {
+    playPauseButtonUI.classList.remove("play");
+    playPauseButtonUI.classList.remove("pause");
+    playPauseButtonUI.innerHTML = isPlaying ? "Pause" : "Play";
+    playPauseButtonUI.classList.add(isPlaying ? "pause" : "play");
+  })
+
   function pausePlay() {
     if (player.isPlaying) {
       player.pause();
     } else {
       player.play();
     }
-
-    playPauseButtonUI.classList.remove("play");
-    playPauseButtonUI.classList.remove("pause");
-    playPauseButtonUI.innerHTML = player.isPlaying ? "Pause" : "Play";
-    playPauseButtonUI.classList.add(player.isPlaying ? "pause" : "play");
   }
 
   playPauseButtonUI.addEventListener("click", () => {

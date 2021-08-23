@@ -5,6 +5,7 @@ export class AudioPlayer {
   private _currentAudioElement: undefined | HTMLAudioElement;
   private _preloadAudioElement: undefined | HTMLAudioElement;
   private _isPlaying: boolean = false;
+  private _playPauseCallbacks: ((isPlaying: boolean) => void)[] = []
   public get isPlaying() {
     return this._isPlaying;
   }
@@ -34,6 +35,17 @@ export class AudioPlayer {
       this._startPlaybackIfCurrent.bind(this)
     );
 
+
+    this._currentAudioElement.addEventListener(
+        "pause",
+        this._pausePlaybackIfCurrent.bind(this)
+      );
+      this._preloadAudioElement.addEventListener(
+        "pause",
+        this._pausePlaybackIfCurrent.bind(this)
+      );
+  
+
     this._timelineManager.registerTimelineCallback(
       this._onTrackUpdated.bind(this)
     );
@@ -48,10 +60,19 @@ export class AudioPlayer {
     }
   }
 
+  private _pausePlaybackIfCurrent(e: Event) {
+    if (e.target === this._currentAudioElement && this._isPlaying) {
+        this._isPlaying = false;
+        this._onPlayPause();
+    }
+  }
+
+
   public play(): void {
     this._isPlaying = true;
     const now = new Date();
     this._onTrackUpdated(this._timelineManager.getTrackForTime(now));
+    this._onPlayPause();
   }
 
   private _onVolumeUpdated(newVolume: number) {
@@ -102,5 +123,21 @@ export class AudioPlayer {
     this._isPlaying = false;
     this._currentAudioElement?.pause();
     this._preloadAudioElement?.pause();
+    this._onPlayPause();
+  }
+
+  public registerPlayPauseCallback(cb: (isPlaying: boolean) => void) {
+      this._playPauseCallbacks.push(cb)
+  }
+
+  private _onPlayPause() {
+    for (let cb of this._playPauseCallbacks) {
+        try {
+            cb(this.isPlaying)
+        } catch (e) {
+            setTimeout(() => {throw e}, 0)
+        }
+    }
+
   }
 }
