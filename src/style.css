@@ -350,6 +350,34 @@ input[type="range"]::-ms-fill-upper {
   width: 2em;
 }
 
+.volume-slider-container input[type="range"]:not(input[type="range"]) {
+  pointer-events: none;
+  touch-action: none;
+}
+
+/* Hack to delay delay input on the volume slider on mobile,
+  so hovering over the volume slider doesn't bleed over to
+  the slider */
+  .volume-slider-container:hover input[type="range"],
+.volume-slider-container:hover:focus-within input[type="range"] {
+  animation-name: delay-input;
+  animation-duration: 0.05s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+@keyframes delay-input {
+  0% {
+    pointer-events: none;
+    touch-action: none;
+  }
+  90% {
+    pointer-events: none;
+    touch-action: none;
+  }
+  100% {
+  }
+}
+
 .volume-slider-container:not(:hover, :focus-within) .volume-slider {
   opacity: 0;
 }
