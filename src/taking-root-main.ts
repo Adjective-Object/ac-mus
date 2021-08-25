@@ -381,7 +381,7 @@ const takingRootTimeline: HourlyTimeline = {
   },
   22: {
     audioUrl:
-      "./taking-root/music/9pm-loop.ogg",
+      "./taking-root/music/10pm-loop.mp3",
     meta: {
       by: [
         {
@@ -389,11 +389,12 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 22:00 not yet released)",
+      title: "10 PM - Animal Crossing - Taking Root",
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+        "linear-gradient(to bottom, #1c2742, #171730)",
+      backgroundTileImgUrl: "./taking-root/img/tile-10pm.png",
+      blendMode: "transparent-soft",
       darkLight: 'dark'
     },
   },
