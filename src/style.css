@@ -350,11 +350,6 @@ input[type="range"]::-ms-fill-upper {
   width: 2em;
 }
 
-.volume-slider-container input[type="range"]:not(input[type="range"]) {
-  pointer-events: none;
-  touch-action: none;
-}
-
 /* Hack to delay delay input on the volume slider on mobile,
   so hovering over the volume slider doesn't bleed over to
   the slider */
