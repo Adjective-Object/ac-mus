@@ -3,7 +3,7 @@ import { AudioPlayer } from "./AudioPlayer";
 import { HourlyTimeline, TimelineManager } from "./TimelineManager";
 import { MetaDisplay } from "./MetaDisplay";
 import { TimeDisplay } from "./TimeDisplay";
-import { BackgroundDoubleBuffer } from "./BackgroundDobuleBuffer";
+import { BackgroundDoubleBuffer } from "./BackgroundDoubleBuffer";
 import { VolumeSlider } from "./VolumeSlider";
 
 const takingRootTimeline: HourlyTimeline = {
