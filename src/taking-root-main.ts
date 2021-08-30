@@ -5,11 +5,12 @@ import { MetaDisplay } from "./MetaDisplay";
 import { TimeDisplay } from "./TimeDisplay";
 import { BackgroundDoubleBuffer } from "./BackgroundDoubleBuffer";
 import { VolumeSlider } from "./VolumeSlider";
+import { AmbienceManager } from "./AmbienceManager";
+import { AmbienceUI } from "./AmbienceUI";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
-    audioUrl:
-      "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -19,15 +20,13 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 00:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      darkLight: 'dark'
+      darkLight: "dark",
     },
   },
   1: {
-    audioUrl:
-      "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -37,15 +36,13 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 01:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      darkLight: 'dark'
-     },
+      darkLight: "dark",
+    },
   },
   2: {
-    audioUrl:
-      "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -55,15 +52,13 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 02:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      darkLight: 'dark'
+      darkLight: "dark",
     },
   },
   3: {
-    audioUrl:
-      "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -73,15 +68,13 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 03:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      darkLight: 'dark'
+      darkLight: "dark",
     },
   },
   4: {
-    audioUrl:
-      "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -91,15 +84,13 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 04:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      darkLight: 'dark'
+      darkLight: "dark",
     },
   },
   5: {
-    audioUrl:
-      "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.ogg",
     meta: {
       by: [
         {
@@ -109,8 +100,7 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 05:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #d7561d, #faeec1)",
+      backgroundStyle: "linear-gradient(to bottom, #d7561d, #faeec1)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
     },
   },
@@ -157,7 +147,7 @@ const takingRootTimeline: HourlyTimeline = {
       bannerUrl: "./taking-root/img/default-banner.png",
       backgroundStyle: "linear-gradient(to bottom, #67d0e7, #6fc4d5, #2b627f)",
       backgroundTileImgUrl: "./taking-root/img/tile-garden.png",
-      blendMode: 'default',
+      blendMode: "default",
     },
   },
   9: {
@@ -285,8 +275,7 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "4 PM - Animal Crossing - Taking Root",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to top, #7a597e, #b3a5bd, #b3a5bd)",
+      backgroundStyle: "linear-gradient(to top, #7a597e, #b3a5bd, #b3a5bd)",
       backgroundTileImgUrl: "./taking-root/img/tile-rich-purple.png",
       blendMode: "half-visible",
     },
@@ -380,8 +369,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   22: {
-    audioUrl:
-      "./taking-root/music/10pm-loop.mp3",
+    audioUrl: "./taking-root/music/10pm-loop.mp3",
     meta: {
       by: [
         {
@@ -391,16 +379,14 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "10 PM - Animal Crossing - Taking Root",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #1c2742, #171730)",
+      backgroundStyle: "linear-gradient(to bottom, #1c2742, #171730)",
       backgroundTileImgUrl: "./taking-root/img/tile-10pm.png",
       blendMode: "transparent-soft",
-      darkLight: 'dark'
+      darkLight: "dark",
     },
   },
   23: {
-    audioUrl:
-      "./taking-root/music/9pm-loop.ogg",
+    audioUrl: "./taking-root/music/9pm-loop.ogg",
     meta: {
       by: [
         {
@@ -410,10 +396,9 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 23:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle:
-        "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      darkLight: 'dark'
+      darkLight: "dark",
     },
   },
 };
@@ -424,6 +409,66 @@ const player = new AudioPlayer(timelineManager, volumeSlider);
 const metaDisplay = new MetaDisplay(timelineManager);
 const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
+const ambienceManager = new AmbienceManager({
+  calmRain: {
+    audioAssetUrls: [
+      {
+        url: "./ambience/env/Env_BaseRainCalm.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 20.560062,
+      },
+      {
+        url: "./ambience/env/Env_BaseRainCalm.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 20.560062,
+      },
+    ],
+    cycleMode: { type: "solid-loop" },
+    sequenceMode: { type: "sequential" },
+    iconUrl: "./ambience/icon/cloud-rain.svg",
+  },
+  indoorTentRain: {
+    audioAssetUrls: [
+      {
+        url: "./ambience/env/Env_IdrTent_BaseRainCalm00.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 20.560062,
+      },
+      {
+        url: "./ambience/env/Env_IdrTent_BaseRainCalm00.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 20.560062,
+      },
+    ],
+    cycleMode: { type: "solid-loop" },
+    sequenceMode: { type: "sequential" },
+    iconUrl: "./ambience/icon/campground.svg",
+  },
+  grassWindSummerWeak: {
+    audioAssetUrls: [
+      {
+        url: "./ambience/env/Env_GrassWindSummerWeak.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 20.560062,
+      },
+      {
+        url: "./ambience/env/Env_GrassWindSummerWeak.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 20.560062,
+      },
+    ],
+    cycleMode: { type: "solid-loop" },
+    sequenceMode: { type: "sequential" },
+    iconUrl: "./ambience/icon/wind.svg",
+  },
+});
+const ambienceUI = new AmbienceUI(ambienceManager);
 
 type ConstructorOf<T> = {
   new (...args: any[]): T;
@@ -442,6 +487,12 @@ function assertElement<T extends HTMLElement>(
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // set up ambient noise
+  ambienceManager.register(
+    assertElement(HTMLDivElement, "#ambience-audio-container")
+  );
+  ambienceUI.register(assertElement(HTMLDivElement, "#ambience-ui-container"));
+
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(assertElement(HTMLDivElement, "#music-host"));
   backgroundDoubleBuffer.register(
@@ -449,7 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   metaDisplay.register(
-    assertElement(HTMLElement, 'body'),
+    assertElement(HTMLElement, "body"),
     assertElement(HTMLElement, "#meta-music-title"),
     assertElement(HTMLImageElement, "#meta-banner-img"),
     assertElement(HTMLElement, "#meta-artist-container")
@@ -462,7 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextHourButton = assertElement(HTMLButtonElement, "#next-hour-button");
   timeDisplay.register(prevHourButton, nextHourButton);
 
-  volumeSlider.register(assertElement(HTMLInputElement, '#volume-slider'))
+  volumeSlider.register(assertElement(HTMLInputElement, "#volume-slider"));
 
   // start the timeline
   timelineManager.start();
@@ -475,7 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
     playPauseButtonUI.classList.remove("pause");
     playPauseButtonUI.innerHTML = isPlaying ? "Pause" : "Play";
     playPauseButtonUI.classList.add(isPlaying ? "pause" : "play");
-  })
+  });
 
   function pausePlay() {
     if (player.isPlaying) {
@@ -507,7 +558,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (!(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLButtonElement) &&  listenToKeys.some((k) => e.key === k)) {
+      if (
+        !(e.target instanceof HTMLInputElement) &&
+        !(e.target instanceof HTMLButtonElement) &&
+        listenToKeys.some((k) => e.key === k)
+      ) {
         cb();
 
         button.classList.add("pressed");

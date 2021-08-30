@@ -223,12 +223,12 @@ a {
   align-items: center;
 }
 
-.volume-slider {
+.main-volume-slider {
   appearance: none;
-  background-color: inherit;
   flex-shrink: 1;
-  width: 6em;
   margin: 0.25em;
+
+  width: 6em;
 
   opacity: 1;
   transition: opacity 0.15s;
@@ -247,6 +247,10 @@ a {
   overflow: hidden;
   transition: width 0.15s;
   width: 9em;
+}
+
+input[type="range"] {
+  background-color: inherit;
 }
 
 /* THUMB STYLES */
@@ -392,4 +396,80 @@ input[type="range"]::-ms-fill-upper {
   display: inline-block;
   content: url("/common/svg/volume-up.svg");
   width: 1em;
+}
+
+.ambience-ui-container {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  width: 256px;
+  background-color: rgba(255,255,255,0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.ambience-add-remove-ui-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ambience-nodes-container {
+  overflow-y: auto;
+}
+
+.ambience-ui-add-button.media-button {
+  width: 32px;
+  height: 32px;
+}
+
+.ambience-ui-add-button.media-button img {
+  width: 55%;
+}
+
+.ambience-node {
+  width: calc(100%-2em);
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #8a592e;
+  display:flex;
+
+  align-items: center;
+  position: relative;
+}
+
+.ambience-node .ambience-icon {
+  width: 25px;
+  height: 25px;
+  position: relative;
+}
+
+.ambience-node .ambience-sliders-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1em;
+  margin-right: 1em;
+  flex-shrink: 1;
+  flex-grow: 1;
+  position: relative;
+}
+
+.ambience-slider {
+  width: 100%;
+}
+
+.ambience-node .close-button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5em;
+  height: 1.5em;
+
+  background-image: url("/common/svg/times.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
