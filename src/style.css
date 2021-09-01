@@ -2,6 +2,18 @@
   --media-button-shadow: #512b15;
   --media-button-stroke: #c3b241;
   --media-button-fill: #8a592e;
+
+  --ambience-node-fill: #109a76;
+  --ambience-header-fill: #faf1e2;
+  --ambience-node-shadow: #b9ac8a;
+  --ambience-nodes-container-fill: #c6c0a7;
+}
+
+.darkmode {
+  --ambience-node-fill: #109a76;
+  --ambience-header-fill: #17172a;
+  --ambience-node-shadow: #3d4048;
+  --ambience-nodes-container-fill: #2f2f4d;
 }
 
 .blue-button {
@@ -198,7 +210,7 @@ a {
   width: 100%;
   height: 100%;
   z-index: -1;
-  transition: opacity 0.5s;
+  transition: opacity 0.25s;
 }
 
 .background:not(.active) {
@@ -421,30 +433,28 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .ambience-toggle {
-  transition: transform 0.3s;
+  transition: transform 0.25s;
 }
 .open .ambience-toggle, .ambience-ui-container:focus-within ~ .ambience-toggle{
-  transform: translate(56px);
+  transform: translate(-56px);
 }
 .ambience-add-remove-ui-wrapper {
-  flex-direction: row-reverse;
-  padding-left: 56px;
+  padding-right: 56px;
 }
 
 .ambience-outer-wrapper {
   position: absolute;
   height: 100%;
-  right: 0;
+  left: 0;
   display: flex;
-  flex-direction: row-reverse;
   align-items:flex-start;
 }
 .ambience-ui-container {
   width: 256px;
-  background-color: #faf1e2;
+  background-color: var(--ambience-header-fill);
   display: flex;
   flex-direction: column;
-  transition: width 0.3s;
+  transition: width 0.3s, background-color 0.3s;
 }
 .ambience-ui-container>* {
   width: 256px;
@@ -463,13 +473,14 @@ input[type="range"]::-ms-fill-upper {
 
 .ambience-nodes-container {
   overflow-y: auto;
-  background-color: #c6c0a7;
+  background-color: var(--ambience-nodes-container-fill);
+  transition: background-color 0.3s
 }
 
 .ambience-ui-container {
-  border-bottom-left-radius: 1.3em;
+  border-bottom-right-radius: 1.3em;
   overflow: hidden;
-  filter: drop-shadow(5px 5px 0px rgba(50, 50, 50, 0.4));
+  filter: drop-shadow(4px 6px 0px rgba(50, 50, 50, 0.4));
 }
 
 .media-button.smaller-media-button {
@@ -486,13 +497,14 @@ input[type="range"]::-ms-fill-upper {
   padding: 1em;
   margin: 1em;
   display:flex;
-  background-color: #109a76;
-  filter: drop-shadow(4px 4px 0px #b9ac8a);
+  background-color: var(--ambience-node-fill);
+  filter: drop-shadow(4px 4px 0px var(--ambience-node-shadow));
   border-radius: 0.5em;
 
   align-items: center;
   position: relative;
 }
+
 
 .ambience-node .ambience-icon {
   width: 25px;
