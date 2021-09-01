@@ -487,11 +487,20 @@ function assertElement<T extends HTMLElement>(
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ambience menu toggle
+  const ambienceToggleButton = assertElement(HTMLButtonElement, "#ambience-toggle")
+  const ambienceOuterContainer = assertElement(HTMLDivElement, '#ambience-outer-wrapper');
+  const ambienceUIContainer = assertElement(HTMLDivElement, "#ambience-ui-container");
+  ambienceToggleButton.addEventListener('click', () => {
+    ambienceOuterContainer.classList.toggle('open')
+  })
+
+
   // set up ambient noise
   ambienceManager.register(
     assertElement(HTMLDivElement, "#ambience-audio-container")
   );
-  ambienceUI.register(assertElement(HTMLDivElement, "#ambience-ui-container"));
+  ambienceUI.register(ambienceUIContainer);
 
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(assertElement(HTMLDivElement, "#music-host"));

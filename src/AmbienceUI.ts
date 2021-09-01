@@ -28,8 +28,8 @@ class AmbienceNodeUI<TEntityId extends string> {
     volumeInput.classList.add('ambience-slider', 'volume')
     volumeInput.type = "range";
     volumeInput.min = (0).toString();
-    volumeInput.max = (1).toString();
-    volumeInput.value = (this._ambienceNode.audioSources[0]?.element?.volume || 0.5).toString()
+    volumeInput.max = (2).toString();
+    volumeInput.value = "" + this._ambienceManager.getAmbienceNodeVolume(this._ambienceNode.id)
     volumeInput.step = (0.01).toString();
 
     volumeInput.addEventListener("input", () => {
@@ -118,7 +118,7 @@ export class AmbienceUI<TEntityId extends string> {
 
     for (let [id, ambienceEntity] of this._ambienceManager.getAvailableEntities()) {
         const button = doc.createElement('button')
-        button.classList.add('ambience-ui-add-button', 'media-button')
+        button.classList.add('ambience-ui-add-button', 'media-button', 'smaller-media-button')
 
         const img = doc.createElement("img");
         img.classList.add("ambience-icon");

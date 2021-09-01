@@ -1,3 +1,15 @@
+:root {
+  --media-button-shadow: #512b15;
+  --media-button-stroke: #c3b241;
+  --media-button-fill: #8a592e;
+}
+
+.blue-button {
+  --media-button-shadow: #09565c;
+  --media-button-stroke: #c3b241;
+  --media-button-fill: #109a76;
+}
+
 body,
 html,
 *,
@@ -80,8 +92,8 @@ a {
   border: 3px solid transparent;
   border-radius: 50%;
   font-size: 0;
-  background-color: #8a592e;
-  filter: drop-shadow(3px 3px 0px #512b15);
+  background-color: var(--media-button-fill);
+  filter: drop-shadow(3px 3px 0px var(--media-button-shadow));
   color: white;
 
   display: flex;
@@ -95,17 +107,17 @@ a {
 }
 
 .media-button:focus {
-  border: 3px solid #c3b241;
+  border: 3px solid var(--media-button-stroke);
 }
 
 .media-button:active,
 .media-button.pressed {
   transform: translate(2px, 2px);
-  filter: drop-shadow(1px 1px 0px #512b15);
+  filter: drop-shadow(1px 1px 0px var(--media-button-shadow));
 }
 
-.media-button::before {
-  filter: drop-shadow(2px 2px 0px #512b15);
+.media-button::before, .media-button img {
+  filter: drop-shadow(2px 2px 0px var(--media-button-shadow));
 }
 
 .media-button.play::before {
@@ -127,6 +139,11 @@ a {
   width: 60%;
   position: relative;
   left: 4%;
+}
+.media-button.ambience::before {
+  content: url("/common/svg/sound.svg");
+  width: 80%;
+  position: relative;
 }
 
 .app-container {
@@ -354,6 +371,11 @@ input[type="range"]::-ms-fill-upper {
   width: 2em;
 }
 
+.volume-slider-container:not(:hover, :focus-within) .main-volume-slider {
+  opacity: 0;
+}
+
+
 /* Hack to delay delay input on the volume slider on mobile,
   so hovering over the volume slider doesn't bleed over to
   the slider */
@@ -398,14 +420,40 @@ input[type="range"]::-ms-fill-upper {
   width: 1em;
 }
 
-.ambience-ui-container {
+.ambience-toggle {
+  transition: transform 0.3s;
+}
+.open .ambience-toggle, .ambience-ui-container:focus-within ~ .ambience-toggle{
+  transform: translate(56px);
+}
+.ambience-add-remove-ui-wrapper {
+  flex-direction: row-reverse;
+  padding-left: 56px;
+}
+
+.ambience-outer-wrapper {
   position: absolute;
   height: 100%;
-  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items:flex-start;
+}
+.ambience-ui-container {
   width: 256px;
-  background-color: rgba(255,255,255,0.4);
+  background-color: #faf1e2;
   display: flex;
   flex-direction: column;
+  transition: width 0.3s;
+}
+.ambience-ui-container>* {
+  width: 256px;
+}
+
+.ambience-ui-container:not(:focus-within, .open *) {
+  pointer-events: none;
+  width: 0;
+  overflow: hidden
 }
 
 .ambience-add-remove-ui-wrapper {
@@ -415,14 +463,21 @@ input[type="range"]::-ms-fill-upper {
 
 .ambience-nodes-container {
   overflow-y: auto;
+  background-color: #c6c0a7;
 }
 
-.ambience-ui-add-button.media-button {
+.ambience-ui-container {
+  border-bottom-left-radius: 1.3em;
+  overflow: hidden;
+  filter: drop-shadow(5px 5px 0px rgba(50, 50, 50, 0.4));
+}
+
+.media-button.smaller-media-button {
   width: 32px;
   height: 32px;
 }
 
-.ambience-ui-add-button.media-button img {
+.media-button.smaller-media-button img {
   width: 55%;
 }
 
@@ -430,8 +485,10 @@ input[type="range"]::-ms-fill-upper {
   width: calc(100%-2em);
   padding: 1em;
   margin: 1em;
-  border: 1px solid #8a592e;
   display:flex;
+  background-color: #109a76;
+  filter: drop-shadow(4px 4px 0px #b9ac8a);
+  border-radius: 0.5em;
 
   align-items: center;
   position: relative;
@@ -464,10 +521,10 @@ input[type="range"]::-ms-fill-upper {
   background-color: transparent;
 
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 1.5em;
-  height: 1.5em;
+  top: 0.25em;
+  right: 0.25em;
+  width: 1.35em;
+  height: 1.35em;
 
   background-image: url("/common/svg/times.svg");
   background-repeat: no-repeat;

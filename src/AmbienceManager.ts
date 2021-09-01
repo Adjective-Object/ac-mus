@@ -271,6 +271,15 @@ export class AmbienceManager<TEntityId extends string> {
     }
   }
 
+  public getAmbienceNodeVolume(nodeId: string): number {
+    const node = this._ambienceNodes.get(nodeId);
+    if (!node) {
+      throw new Error(`Could not get volume of unknown node ${nodeId}`);
+    }
+
+    return node.audioSources[0].element.volume;
+  }
+
   public updateAmbienceNodePanning(nodeId: string, newLRPanning: number): void {
     const nodeToUpdate = this._ambienceNodes.get(nodeId);
     if (!nodeToUpdate) {
