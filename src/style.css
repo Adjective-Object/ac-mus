@@ -446,15 +446,20 @@ input[type="range"]::-ms-fill-upper {
   position: absolute;
   height: 100%;
   left: 0;
+  top: 0;
   display: flex;
   align-items:flex-start;
+  max-height: 80vh;
+  z-index: 10;
 }
 .ambience-ui-container {
   width: 256px;
   background-color: var(--ambience-header-fill);
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   transition: width 0.3s, background-color 0.3s;
+  max-height: 100%;
 }
 .ambience-ui-container>* {
   width: 256px;
