@@ -168,8 +168,6 @@ export class AmbienceManager<TEntityId extends string> {
   public register(audioHostElement: HTMLElement) {
     this._audioHostElement = audioHostElement;
     console.log("context", this._audioContext);
-
-    this._audioContext.resume();
   }
   
   public insertAnalyser(): AnalyserNode {
@@ -212,6 +210,11 @@ export class AmbienceManager<TEntityId extends string> {
   }
 
   public addAmbienceNode(entityId: TEntityId, initialVolume: number): string {
+    // start the audiocontext if it is frozen
+    if (this._audioContext.state === "suspended") {
+      this._audioContext.resume();
+    }
+
     const entity = this._knownEntities[entityId];
     if (!entity) {
       throw new Error(
@@ -311,6 +314,14 @@ export class AmbienceManager<TEntityId extends string> {
         }, 0);
       }
     });
+
+    if (this._ambienceNodes.size === 0) {
+      setTimeout(() => {
+        if (this._ambienceNodes.size === 0) {
+          this._audioContext.suspend();
+        }
+      }, 1000)
+    }
   }
 
   public updateAmbienceNodeVolume(nodeId: string, newVolume: number): void {

@@ -1,7 +1,5 @@
 import { AmbienceManager } from "./AmbienceManager";
 
-const noop = () => {};
-
 export class FourierDisplay {
   _audioSource?: AudioNode;
   _analyser?: AnalyserNode;
@@ -97,7 +95,7 @@ export class FourierDisplay {
     }
   }
 
-  private _clearCanvas(this: Required<FourierDisplay>) {
+  private _clearCanvas(this: Required<FourierDisplay> & FourierDisplay) {
     this._canvasCtx2D.clearRect(
         0,
         0,
@@ -106,7 +104,7 @@ export class FourierDisplay {
       );  
   }
 
-  private _render(this: Required<FourierDisplay>) {
+  private _render(this: Required<FourierDisplay> & FourierDisplay) {
     this._analyser.getByteFrequencyData(this._out_arr!);
     this._clearCanvas();
 
