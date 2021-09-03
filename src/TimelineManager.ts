@@ -20,7 +20,7 @@ export type MusicMeta = {
     bannerUrl: string,
     backgroundStyle: string,
     backgroundTileImgUrl: string,
-    blendMode?: 'gray-soft' | 'default' | 'half-visible' | 'transparent-soft',
+    blendMode?: 'gray-soft' | 'default' | 'half-visible' | 'transparent-soft' | 'exclusion',
     darkLight?: 'dark' | 'light',
     by?: Artist[],
 }

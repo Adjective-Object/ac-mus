@@ -192,6 +192,11 @@ a {
   mix-blend-mode: hard-light;
 }
 
+.exclusion-blend {
+  filter: opacity(0.23);
+  mix-blend-mode: exclusion;
+}
+
 .transparent-soft-blend {
   filter: opacity(0.5);
   mix-blend-mode: soft-light;

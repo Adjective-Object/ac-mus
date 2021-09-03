@@ -8,3 +8,4 @@ dist-ssr
 spritesheet.png
 # pre-prepared assets
 raw-assets
+*.mp3

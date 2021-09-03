@@ -164,6 +164,7 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundStyle:
         "linear-gradient(to bottom, #94c743, #80b03b, #61a152, #1b6231)",
       backgroundTileImgUrl: "./taking-root/img/tile-work.png",
+      blendMode: 'transparent-soft',
     },
   },
   10: {
@@ -386,7 +387,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   23: {
-    audioUrl: "./taking-root/music/9pm-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.ogg",
     meta: {
       by: [
         {
@@ -394,14 +395,15 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 23:00 not yet released)",
+      title: "11 PM - Animal Crossing - Taking Root",
       bannerUrl: "./taking-root/img/default-banner.png",
-      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
+      backgroundTileImgUrl: "./taking-root/img/tile-11pm.png",
+      blendMode: "exclusion",
       darkLight: "dark",
     },
-  },
-};
+  }
+}
 
 const timelineManager = new TimelineManager(takingRootTimeline);
 const volumeSlider = new VolumeSlider(0.8);
