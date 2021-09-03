@@ -7,6 +7,7 @@ import { BackgroundDoubleBuffer } from "./BackgroundDoubleBuffer";
 import { VolumeSlider } from "./VolumeSlider";
 import { AmbienceManager } from "./AmbienceManager";
 import { AmbienceUI } from "./AmbienceUI";
+import { FourierDisplay } from "./FourierDisplay";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
@@ -535,6 +536,13 @@ function assertElement<T extends HTMLElement>(
   }
 }
 
+
+const fftDisplay = new FourierDisplay(
+  3, // binCount
+  '#109a76', // fillStyle
+  128 // fftScaleRatio
+);
+
 document.addEventListener("DOMContentLoaded", () => {
   // ambience menu toggle
   const ambienceToggleButton = assertElement(HTMLButtonElement, "#ambience-toggle")
@@ -544,12 +552,16 @@ document.addEventListener("DOMContentLoaded", () => {
     ambienceOuterContainer.classList.toggle('open')
   })
 
-
   // set up ambient noise
   ambienceManager.register(
     assertElement(HTMLDivElement, "#ambience-audio-container")
   );
   ambienceUI.register(ambienceUIContainer);
+  fftDisplay.register(
+    assertElement(HTMLCanvasElement, "#ambience-fft-canvas"),
+    ambienceManager.insertAnalyser(),
+    0.1 // binPaddingPercent
+  )
 
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(assertElement(HTMLDivElement, "#music-host"));

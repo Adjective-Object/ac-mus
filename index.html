@@ -30,7 +30,10 @@
     <div id="backgrounds-host" class="backgrounds-host"></div>
     <div id=ambience-outer-wrapper class="ambience-outer-wrapper">
       <div id="ambience-ui-container" class="ambience-ui-container"></div>  
-      <button id="ambience-toggle" class="media-button blue-button smaller-media-button ambience ambience-toggle">Toggle Ambience Menu</button>
+      <div class="ambience-sliding-ui">
+        <button id="ambience-toggle" class="media-button blue-button smaller-media-button ambience ambience-toggle">Toggle Ambience Menu</button>
+        <canvas id="ambience-fft-canvas" class="ambience-fft-canvas" width="32" height="32"></canvas>  
+      </div>
     </div>
     <div id="ambience-audio-container"></div>
 

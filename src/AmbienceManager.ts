@@ -157,6 +157,7 @@ export class AmbienceManager<TEntityId extends string> {
   private _audioHostElement: HTMLElement | undefined;
   private _onNodeAddedCb: ((node: AmbienceNode) => void)[] = [];
   private _onNodeRemovedCb: ((node: AmbienceNode) => void)[] = [];
+  private _analyserNode?: AnalyserNode;
 
   constructor(private _knownEntities: Record<TEntityId, AmbienceEntity>) {
     this._audioContext = new (window.AudioContext ||
@@ -166,7 +167,22 @@ export class AmbienceManager<TEntityId extends string> {
   public register(audioHostElement: HTMLElement) {
     this._audioHostElement = audioHostElement;
     console.log("context", this._audioContext);
+
     this._audioContext.resume();
+  }
+  
+  public insertAnalyser(): AnalyserNode {
+    if (!this._audioContext) {
+      throw new Error(`No _audioContext, insertAnalyser called before register()?`)
+    }
+
+    if (this._ambienceNodes.size) {
+      throw new Error('Called insertAnalyser after adding ambience')
+    }
+
+    this._analyserNode = this._audioContext.createAnalyser()
+    this._analyserNode.connect(this._audioContext.destination);
+    return this._analyserNode;
   }
 
   public registerAddedORemovedCallback(
@@ -227,7 +243,11 @@ export class AmbienceManager<TEntityId extends string> {
         volumeGain: volumeGain
       };
     });
-    panner.connect(this._audioContext.destination);
+    if (this._analyserNode) {
+      panner.connect(this._analyserNode);
+    } else {
+      panner.connect(this._audioContext.destination);
+    }
 
     const cleanupAndStopPlayback = startPlayback(entity, audioSources);
 
@@ -250,6 +270,10 @@ export class AmbienceManager<TEntityId extends string> {
       }
     });
     return node.id;
+  }
+
+  public getOutputBeforeDestination() {
+    return this._analyser;
   }
 
   public removeAmbienceNode(nodeId: string): void {
