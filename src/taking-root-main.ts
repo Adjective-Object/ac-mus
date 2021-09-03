@@ -411,13 +411,7 @@ const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
 const ambienceManager = new AmbienceManager({
   calmRain: {
-    audioAssetUrls: [
-      {
-        url: "./ambience/env/Env_BaseRainCalm.ogg",
-        fadeInDuration: 2,
-        fadeOutDuration: 7,
-        backupPlayDuration: 20.560062,
-      },
+    audioAssets: [
       {
         url: "./ambience/env/Env_BaseRainCalm.ogg",
         fadeInDuration: 2,
@@ -430,18 +424,12 @@ const ambienceManager = new AmbienceManager({
     iconUrl: "./ambience/icon/cloud-rain.svg",
   },
   indoorTentRain: {
-    audioAssetUrls: [
+    audioAssets: [
       {
         url: "./ambience/env/Env_IdrTent_BaseRainCalm00.ogg",
         fadeInDuration: 2,
         fadeOutDuration: 7,
-        backupPlayDuration: 20.560062,
-      },
-      {
-        url: "./ambience/env/Env_IdrTent_BaseRainCalm00.ogg",
-        fadeInDuration: 2,
-        fadeOutDuration: 7,
-        backupPlayDuration: 20.560062,
+        backupPlayDuration: 20.631583,
       },
     ],
     cycleMode: { type: "solid-loop" },
@@ -449,24 +437,81 @@ const ambienceManager = new AmbienceManager({
     iconUrl: "./ambience/icon/campground.svg",
   },
   grassWindSummerWeak: {
-    audioAssetUrls: [
+    audioAssets: [
       {
         url: "./ambience/env/Env_GrassWindSummerWeak.ogg",
         fadeInDuration: 2,
         fadeOutDuration: 7,
-        backupPlayDuration: 20.560062,
-      },
-      {
-        url: "./ambience/env/Env_GrassWindSummerWeak.ogg",
-        fadeInDuration: 2,
-        fadeOutDuration: 7,
-        backupPlayDuration: 20.560062,
+        backupPlayDuration: 27.817666,
       },
     ],
     cycleMode: { type: "solid-loop" },
     sequenceMode: { type: "sequential" },
     iconUrl: "./ambience/icon/wind.svg",
   },
+  seaRocks: {
+    audioAssets: [
+      {
+        url: "./ambience/env/Env_SeaWaterrock00.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 21,
+      },
+      {
+        url: "./ambience/env/Env_SeaWaterrock01.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 21,
+      },
+      {
+        url: "./ambience/env/Env_SeaWaterrock02.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 21,
+      },
+      {
+        url: "./ambience/env/Env_SeaWaterrock03.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 21,
+      },
+    ],
+    cycleMode: { type: "solid-loop" },
+    sequenceMode: { type: "random" },
+    iconUrl: "./ambience/icon/water.svg",
+  },
+  seaWaves: {
+    audioAssets: [
+      {
+        url: "./ambience/env/Env_SeaWaterWave00.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 12.336,
+      },
+      {
+        url: "./ambience/env/Env_SeaWaterWave01.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 12.757333,
+      },
+      {
+        url: "./ambience/env/Env_SeaWaterWave02.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 14.404437,
+      },
+      {
+        url: "./ambience/env/Env_SeaWaterWave03.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 12.08,
+      },
+    ],
+    cycleMode: { type: "solid-loop" },
+    sequenceMode: { type: "random" },
+    iconUrl: "./ambience/icon/umbrella-beach.svg",
+  },
+
 });
 const ambienceUI = new AmbienceUI(ambienceManager);
 

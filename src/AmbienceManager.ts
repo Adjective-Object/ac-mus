@@ -21,7 +21,7 @@ type AudioAsset = PlayDuration & {
 };
 
 export type AmbienceEntity = {
-  audioAssetUrls: [AudioAsset, AudioAsset, ...AudioAsset[]];
+  audioAssets: [AudioAsset, ...AudioAsset[]];
   cycleMode: AudioCyclingMode;
   sequenceMode: AudioSequencingMode;
   iconUrl: string;
@@ -112,6 +112,10 @@ function startPlayback(
       // fade out next
       let duration = audioSource.element.duration;
       if (!Number.isNaN(duration) && Number.isFinite(duration)) {
+        if (audioSource.backupPlayDuration !== undefined && Math.abs(duration - audioSource.backupPlayDuration) > 0.01) {
+          console.warn(`Mismatched backup play duration: ${audioSource.element.src} had backup duration ${audioSource.backupPlayDuration} but actual was ${duration}`)
+        }
+        
         audioSource.gain.gain.setTargetAtTime(0, audioNow + duration, audioSource.fadeOutDuration * TIME_CONST_FRAC);
       } else if (audioSource.backupPlayDuration) {
         console.warn(`Duration was NaN or not finite (${duration}), using backup duration of ${audioSource.backupPlayDuration}`);
@@ -192,7 +196,12 @@ export class AmbienceManager<TEntityId extends string> {
       );
     }
     const panner = this._audioContext.createStereoPanner();
-    const audioSources = entity.audioAssetUrls.map((asset): AudioSource => {
+    const audioAssetsRepeated = [
+      ...entity.audioAssets,
+      ...entity.audioAssets
+    ]
+
+    const audioSources = audioAssetsRepeated.map((asset): AudioSource => {
       // create a new audio element and attach it to the panner
       const audio = document.createElement("audio");
 
