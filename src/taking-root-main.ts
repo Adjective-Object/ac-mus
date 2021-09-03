@@ -424,6 +424,7 @@ const ambienceManager = new AmbienceManager({
     cycleMode: { type: "solid-loop" },
     sequenceMode: { type: "sequential" },
     iconUrl: "./ambience/icon/cloud-rain.svg",
+    gainCap: 3,
   },
   indoorTentRain: {
     audioAssets: [
@@ -437,6 +438,7 @@ const ambienceManager = new AmbienceManager({
     cycleMode: { type: "solid-loop" },
     sequenceMode: { type: "sequential" },
     iconUrl: "./ambience/icon/campground.svg",
+    gainCap: 3,
   },
   grassWindSummerWeak: {
     audioAssets: [
@@ -456,25 +458,25 @@ const ambienceManager = new AmbienceManager({
       {
         url: "./ambience/env/Env_SeaWaterrock00.ogg",
         fadeInDuration: 2,
-        fadeOutDuration: 7,
+        fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
       {
         url: "./ambience/env/Env_SeaWaterrock01.ogg",
         fadeInDuration: 2,
-        fadeOutDuration: 7,
+        fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
       {
         url: "./ambience/env/Env_SeaWaterrock02.ogg",
         fadeInDuration: 2,
-        fadeOutDuration: 7,
+        fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
       {
         url: "./ambience/env/Env_SeaWaterrock03.ogg",
         fadeInDuration: 2,
-        fadeOutDuration: 7,
+        fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
     ],

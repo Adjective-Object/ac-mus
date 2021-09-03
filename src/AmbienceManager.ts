@@ -25,6 +25,7 @@ export type AmbienceEntity = {
   cycleMode: AudioCyclingMode;
   sequenceMode: AudioSequencingMode;
   iconUrl: string;
+  gainCap?: number;
 };
 
 export type AmbienceNode = {
@@ -38,7 +39,8 @@ export type AmbienceNode = {
 type AudioSource = PlayDuration & {
   element: HTMLAudioElement;
   source: MediaElementAudioSourceNode;
-  gain: GainNode;
+  crossFadeGain: GainNode;
+  volumeGain: GainNode;
 };
 
 function* infiniteSequence<T>(
@@ -95,18 +97,18 @@ function startPlayback(
         throw new Error("Infinite ambience playback sequence was terminated.");
       }
       const audioSource = audioSourceIter.value;
-      const audioNow = audioSource.gain.context.currentTime;
+      const audioNow = audioSource.crossFadeGain.context.currentTime;
 
       // fade in this
       if (!isFirstIteration) {
-        audioSource.gain.gain.value = 0;
-        audioSource.gain.gain.setTargetAtTime(
+        audioSource.crossFadeGain.gain.value = 0;
+        audioSource.crossFadeGain.gain.setTargetAtTime(
           1,
           audioNow + audioSource.fadeInDuration,
           audioSource.fadeInDuration * TIME_CONST_FRAC
         );  
       } else {
-        audioSource.gain.gain.value = 1;  
+        audioSource.crossFadeGain.gain.value = 1;  
       }
 
       // fade out next
@@ -116,7 +118,7 @@ function startPlayback(
           console.warn(`Mismatched backup play duration: ${audioSource.element.src} had backup duration ${audioSource.backupPlayDuration} but actual was ${duration}`)
         }
         
-        audioSource.gain.gain.setTargetAtTime(0, audioNow + duration, audioSource.fadeOutDuration * TIME_CONST_FRAC);
+        audioSource.crossFadeGain.gain.setTargetAtTime(0, audioNow + duration, audioSource.fadeOutDuration * TIME_CONST_FRAC);
       } else if (audioSource.backupPlayDuration) {
         console.warn(`Duration was NaN or not finite (${duration}), using backup duration of ${audioSource.backupPlayDuration}`);
           duration = audioSource.backupPlayDuration
@@ -209,15 +211,20 @@ export class AmbienceManager<TEntityId extends string> {
       audio.src = asset.url;
       this._audioHostElement!.appendChild(audio);
       const source = this._audioContext.createMediaElementSource(audio);
-      const gain = this._audioContext.createGain();
-      source.connect(gain);
-      gain.connect(panner);
-
+      const crossFadeGain = this._audioContext.createGain();
+      const volumeGain = this._audioContext.createGain();
+      source.connect(volumeGain);
+      volumeGain.connect(crossFadeGain)
+      volumeGain.gain.value = 1;
+      crossFadeGain.connect(panner);
+      crossFadeGain.gain.value = 1;
+      
       return {
         ...asset,
         element: audio,
         source,
-        gain,
+        crossFadeGain: crossFadeGain,
+        volumeGain: volumeGain
       };
     });
     panner.connect(this._audioContext.destination);
@@ -276,7 +283,7 @@ export class AmbienceManager<TEntityId extends string> {
     }
 
     for (let source of nodeToUpdate.audioSources) {
-      source.element.volume = newVolume;
+      source.volumeGain.gain.value = newVolume;
     }
   }
 
@@ -286,7 +293,7 @@ export class AmbienceManager<TEntityId extends string> {
       throw new Error(`Could not get volume of unknown node ${nodeId}`);
     }
 
-    return node.audioSources[0].element.volume;
+    return node.audioSources[0].volumeGain.gain.value;
   }
 
   public updateAmbienceNodePanning(nodeId: string, newLRPanning: number): void {

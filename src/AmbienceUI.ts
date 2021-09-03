@@ -1,5 +1,7 @@
 import { AmbienceManager, AmbienceNode } from "./AmbienceManager";
 
+const DEFAULT_GAIN_CAP = 2;
+
 class AmbienceNodeUI<TEntityId extends string> {
   private _parentElement?: HTMLElement;
   private _elementContainer?: HTMLElement;
@@ -28,7 +30,7 @@ class AmbienceNodeUI<TEntityId extends string> {
     volumeInput.classList.add('ambience-slider', 'volume')
     volumeInput.type = "range";
     volumeInput.min = (0).toString();
-    volumeInput.max = (2).toString();
+    volumeInput.max = (this._ambienceNode.entity.gainCap ?? DEFAULT_GAIN_CAP).toString();
     volumeInput.value = "" + this._ambienceManager.getAmbienceNodeVolume(this._ambienceNode.id)
     volumeInput.step = (0.01).toString();
 
