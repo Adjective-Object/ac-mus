@@ -155,6 +155,7 @@ export class AmbienceManager<TEntityId extends string> {
   private _ambienceNodes: Map<string, AmbienceNode> = new Map();
   private _audioContext: AudioContext;
   private _audioHostElement: HTMLElement | undefined;
+  private _onBeforeNodeAddedCb: ((entity: AmbienceEntity) => void)[] = [];
   private _onNodeAddedCb: ((node: AmbienceNode) => void)[] = [];
   private _onNodeRemovedCb: ((node: AmbienceNode) => void)[] = [];
   private _analyserNode?: AnalyserNode;
@@ -193,6 +194,16 @@ export class AmbienceManager<TEntityId extends string> {
     this._onNodeRemovedCb.push(removedCb);
   }
 
+  public registerOnBeforeNodeAddedCallback(
+    onBeforeAddedCb: (entity: AmbienceEntity) => void,
+  ) {
+    this._onBeforeNodeAddedCb.push(onBeforeAddedCb);
+  }
+
+  public isPlaying(): boolean {
+    return this._ambienceNodes.size !== 0;
+  }
+
   public getAvailableEntities(): [TEntityId, AmbienceEntity][] {
     return [...Object.entries(this._knownEntities)] as [
       TEntityId,
@@ -213,6 +224,11 @@ export class AmbienceManager<TEntityId extends string> {
         "audioHostElement was not defined. Was addEntity() called before register()?"
       );
     }
+
+    for(let cb of this._onBeforeNodeAddedCb) {
+      cb(entity);
+    }
+
     const panner = this._audioContext.createStereoPanner();
     const audioAssetsRepeated = [
       ...entity.audioAssets,
@@ -243,6 +259,7 @@ export class AmbienceManager<TEntityId extends string> {
         volumeGain: volumeGain
       };
     });
+
     if (this._analyserNode) {
       panner.connect(this._analyserNode);
     } else {
@@ -270,10 +287,6 @@ export class AmbienceManager<TEntityId extends string> {
       }
     });
     return node.id;
-  }
-
-  public getOutputBeforeDestination() {
-    return this._analyser;
   }
 
   public removeAmbienceNode(nodeId: string): void {

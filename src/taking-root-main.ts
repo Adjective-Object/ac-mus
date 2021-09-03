@@ -538,9 +538,11 @@ function assertElement<T extends HTMLElement>(
 
 
 const fftDisplay = new FourierDisplay(
+  ambienceManager,
   3, // binCount
   '#109a76', // fillStyle
-  128 // fftScaleRatio
+  128, // fftScaleRatio
+  0.1, // binPaddingPercent
 );
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -559,8 +561,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ambienceUI.register(ambienceUIContainer);
   fftDisplay.register(
     assertElement(HTMLCanvasElement, "#ambience-fft-canvas"),
-    ambienceManager.insertAnalyser(),
-    0.1 // binPaddingPercent
   )
 
   // make sure timelineManager listeners are registered before we start the timeline
