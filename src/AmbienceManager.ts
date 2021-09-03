@@ -180,7 +180,6 @@ export class AmbienceManager<TEntityId extends string> {
     }
 
     this._analyserNode = this._audioContext.createAnalyser()
-    this._analyserNode.connect(this._audioContext.destination);
     return this._analyserNode;
   }
 
@@ -265,9 +264,8 @@ export class AmbienceManager<TEntityId extends string> {
 
     if (this._analyserNode) {
       panner.connect(this._analyserNode);
-    } else {
-      panner.connect(this._audioContext.destination);
     }
+    panner.connect(this._audioContext.destination);
 
     const cleanupAndStopPlayback = startPlayback(entity, audioSources);
 
