@@ -534,7 +534,24 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .ambience-slider {
-  width: 100%;
+  width: calc(100% - 1.2em);
+}
+
+.ambience-node .input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ambience-node .input-container.volume::before {
+  content: url("/common/svg/volume-down.svg");
+  width: 0.75em;
+}
+
+.ambience-node .input-container.panner::before {
+  content: url("/common/svg/left-right.svg");
+  position: relative;
+  top:0.15em;
+  width: 0.75em;
 }
 
 .ambience-node .close-button {

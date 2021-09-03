@@ -65,8 +65,14 @@ class AmbienceNodeUI<TEntityId extends string> {
     })    
 
     this._elementContainer.appendChild(img);
-    slidersContainer.appendChild(volumeInput);
-    slidersContainer.appendChild(pannerInput);
+    const volumeInputContainer = doc.createElement('div')
+    volumeInputContainer.classList.add('input-container', 'volume')
+    volumeInputContainer.appendChild(volumeInput)
+    slidersContainer.appendChild(volumeInputContainer);
+    const pannerInputContainer = doc.createElement('div')
+    pannerInputContainer.classList.add('input-container', 'panner')
+    pannerInputContainer.appendChild(pannerInput)
+    slidersContainer.appendChild(pannerInputContainer);
     this._elementContainer.appendChild(slidersContainer);
     this._elementContainer.appendChild(closeButton);
 
