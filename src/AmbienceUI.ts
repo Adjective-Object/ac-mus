@@ -153,7 +153,7 @@ export class AmbienceUI<TEntityId extends string> {
   
       const img = doc.createElement("img");
       img.classList.add("ambience-icon");
-      img.src='/ambience/icon/shuffle.svg'
+      img.src='./ambience/icon/shuffle.svg'
   
       randomizeButton.appendChild(img)
       randomizeButton.addEventListener('click', () => {
