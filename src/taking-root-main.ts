@@ -457,6 +457,20 @@ const ambienceManager = new AmbienceManager({
     sequenceMode: { type: "sequential" },
     iconUrl: "./ambience/icon/wind.svg",
   },
+  campfire: {
+    name: "Campfire",
+    audioAssets: [
+      {
+        url: "./ambience/env/campfire-cagan-celik-freesound.ogg",
+        fadeInDuration: 2,
+        fadeOutDuration: 7,
+        backupPlayDuration: 53.986168,
+      },
+    ],
+    cycleMode: { type: "solid-loop" },
+    sequenceMode: { type: "sequential" },
+    iconUrl: "./ambience/icon/campfire.svg",
+  },
   seaRocks: {
     name: "Trickling Stream",
     audioAssets: [
