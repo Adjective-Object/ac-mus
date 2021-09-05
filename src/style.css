@@ -55,11 +55,18 @@ body {
 
 .visuals-host {
   max-width: 75%;
+  height: 100%;
+}
+
+.song-meta {
+  flex-shrink: 1;
 }
 
 .song-meta .meta-banner-img {
-  max-width: 75%;
-  max-height: 65%;
+  max-width: 75vw;
+  max-height: 50vh;
+
+  flex-shrink: 1;
 }
 
 .meta-music-title {
@@ -172,7 +179,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
 }
 
 .background-tile-mask {
@@ -247,7 +253,7 @@ a {
 }
 
 .bottom-ui {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   padding: 0.5em;
