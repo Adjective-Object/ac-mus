@@ -74,7 +74,7 @@ body {
   font-size: 32px;
   max-width: 100%;
   line-break: none;
-  padding: 0.25em 1em 0.5em 1em;
+  padding: 0.5em 1em 0.5em 1em;
   text-align: center;
   filter: drop-shadow(3px 3px 0px rgba(204, 204, 204, 0.7));
 }
