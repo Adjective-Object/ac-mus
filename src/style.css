@@ -443,7 +443,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .ambience-sliding-ui {
-  transition: transform 0.25s, height 0.25s;
+  transition: transform 0.3s, height 0.3s;
 }
 .open .ambience-sliding-ui, .ambience-ui-container:focus-within ~ .ambience-sliding-ui{
   transform: translate(-56px);
