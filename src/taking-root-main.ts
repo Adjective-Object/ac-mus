@@ -165,7 +165,7 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundStyle:
         "linear-gradient(to bottom, #94c743, #80b03b, #61a152, #1b6231)",
       backgroundTileImgUrl: "./taking-root/img/tile-work.png",
-      blendMode: 'transparent-soft',
+      blendMode: "transparent-soft",
     },
   },
   10: {
@@ -403,8 +403,8 @@ const takingRootTimeline: HourlyTimeline = {
       blendMode: "exclusion",
       darkLight: "dark",
     },
-  }
-}
+  },
+};
 
 const timelineManager = new TimelineManager(takingRootTimeline);
 const volumeSlider = new VolumeSlider(0.8);
@@ -535,7 +535,140 @@ const ambienceManager = new AmbienceManager({
     sequenceMode: { type: "random" },
     iconUrl: "./ambience/icon/umbrella-beach.svg",
   },
-
+  bugs: {
+    name: "Bugs",
+    gainCap: 0.5,
+    audioAssets: [
+      {
+        url: "/ambience/bugs/Insect_Aburazemi_WaitA01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Aburazemi_WaitA.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Kirigirisu_Wait00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Kirigirisu_Wait01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Kohrogi_Wait00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Kohrogi_Wait01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Kumazemi_WaitA00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Kumazemi_WaitB00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Minminzemi_Wait00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Minminzemi_Wait01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Okera_Wait00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Suzumushi_Wait00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Suzumushi_Wait01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitA00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitA01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitA02.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitB00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitB01.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitB02.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+      {
+        url: "/ambience/bugs/Insect_Tsukutsukuhoushi_WaitC00.ogg",
+        fadeInDuration: 0,
+        fadeOutDuration: 0,
+        backupPlayDuration: 4,
+      },
+    ],
+    cycleMode: {
+      type: "random-wait",
+      minWaitSeconds: 0.2,
+      maxWaitSeconds: 0.7,
+    },
+    sequenceMode: { type: "random" },
+    iconUrl: "./ambience/icon/bug.svg",
+    maxStartTimeOffset: 0,
+  },
 });
 const ambienceUI = new AmbienceUI(ambienceManager);
 
@@ -555,32 +688,38 @@ function assertElement<T extends HTMLElement>(
   }
 }
 
-
 const fftDisplay = new FourierDisplay(
   ambienceManager,
   3, // binCount
-  '#109a76', // fillStyle
+  "#109a76", // fillStyle
   128, // fftScaleRatio
-  0.1, // binPaddingPercent
+  0.1 // binPaddingPercent
 );
 
 document.addEventListener("DOMContentLoaded", () => {
   // ambience menu toggle
-  const ambienceToggleButton = assertElement(HTMLButtonElement, "#ambience-toggle")
-  const ambienceOuterContainer = assertElement(HTMLDivElement, '#ambience-outer-wrapper');
-  const ambienceUIContainer = assertElement(HTMLDivElement, "#ambience-ui-container");
-  ambienceToggleButton.addEventListener('click', () => {
-    ambienceOuterContainer.classList.toggle('open')
-  })
+  const ambienceToggleButton = assertElement(
+    HTMLButtonElement,
+    "#ambience-toggle"
+  );
+  const ambienceOuterContainer = assertElement(
+    HTMLDivElement,
+    "#ambience-outer-wrapper"
+  );
+  const ambienceUIContainer = assertElement(
+    HTMLDivElement,
+    "#ambience-ui-container"
+  );
+  ambienceToggleButton.addEventListener("click", () => {
+    ambienceOuterContainer.classList.toggle("open");
+  });
 
   // set up ambient noise
   ambienceManager.register(
     assertElement(HTMLDivElement, "#ambience-audio-container")
   );
   ambienceUI.register(ambienceUIContainer);
-  fftDisplay.register(
-    assertElement(HTMLCanvasElement, "#ambience-fft-canvas"),
-  )
+  fftDisplay.register(assertElement(HTMLCanvasElement, "#ambience-fft-canvas"));
 
   // make sure timelineManager listeners are registered before we start the timeline
   player.register(assertElement(HTMLDivElement, "#music-host"));

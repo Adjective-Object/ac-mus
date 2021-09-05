@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 
 export type AudioCyclingMode =
   | { type: "solid-loop" }
-  | { type: "random-wait"; minWaitMs: number; maxWaitMs: number };
+  | { type: "random-wait"; minWaitSeconds: number; maxWaitSeconds: number };
 export type AudioSequencingMode = { type: "random" } | { type: "sequential" };
 
 type PlayDuration = {
@@ -27,6 +27,7 @@ export type AmbienceEntity = {
   sequenceMode: AudioSequencingMode;
   iconUrl: string;
   gainCap?: number;
+  maxStartTimeOffset?: number;
 };
 
 export type AmbienceNode = {
@@ -102,7 +103,7 @@ function startPlayback(
       const audioNow = audioSource.crossFadeGain.context.currentTime;
       // apply random offset to start time so that when the same sample
       // is on 2 different tracks, it doesn't double-up in unpleasant ways.
-      const startTimeOffset = Math.random() * 2;
+      const startTimeOffset = Math.random() * (entity.maxStartTimeOffset ?? 2);
 
       // fade in this
       if (!isFirstIteration) {
@@ -142,8 +143,8 @@ function startPlayback(
         // sleep for some time
         await wait(
           Math.random() *
-            (entity.cycleMode.maxWaitMs - entity.cycleMode.minWaitMs) +
-            entity.cycleMode.minWaitMs
+            (entity.cycleMode.maxWaitSeconds - entity.cycleMode.minWaitSeconds) +
+            entity.cycleMode.minWaitSeconds
         );
       }
 
@@ -218,7 +219,7 @@ export class AmbienceManager<TEntityId extends string> {
     ][];
   }
 
-  public addAmbienceNode(entityId: TEntityId, initialVolume: number, initialPan = 0): string {
+  public addAmbienceNode(entityId: TEntityId, initialVolumePercent: number, initialPan = 0): string {
     // start the audiocontext if it is frozen
     if (this._audioContext.state === "suspended") {
       this._audioContext.resume();
@@ -260,7 +261,7 @@ export class AmbienceManager<TEntityId extends string> {
       const volumeGain = this._audioContext.createGain();
       source.connect(volumeGain);
       volumeGain.connect(crossFadeGain)
-      volumeGain.gain.value = initialVolume * (entity.gainCap ?? DEFAULT_GAIN_CAP);
+      volumeGain.gain.value = initialVolumePercent * (entity.gainCap ?? DEFAULT_GAIN_CAP);
       crossFadeGain.connect(panner);
       crossFadeGain.gain.value = 1;
       

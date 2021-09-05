@@ -26,13 +26,15 @@ class AmbienceNodeUI<TEntityId extends string> {
     const slidersContainer = doc.createElement('div')
     slidersContainer.classList.add('ambience-sliders-container')
 
+    console.log(this._ambienceManager.getAmbienceNodeVolume(this._ambienceNode.id))
+
     const volumeInput = doc.createElement("input");
     volumeInput.classList.add('ambience-slider', 'volume')
     volumeInput.type = "range";
+    volumeInput.step = (0.01).toString();
     volumeInput.min = (0).toString();
     volumeInput.max = (this._ambienceNode.entity.gainCap ?? DEFAULT_GAIN_CAP).toString();
-    volumeInput.value = "" + this._ambienceManager.getAmbienceNodeVolume(this._ambienceNode.id)
-    volumeInput.step = (0.01).toString();
+    volumeInput.value = this._ambienceManager.getAmbienceNodeVolume(this._ambienceNode.id).toString()
     volumeInput.title=`${this._ambienceNode.entity.name} Volume`
 
     volumeInput.addEventListener("input", () => {
