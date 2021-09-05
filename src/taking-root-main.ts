@@ -11,7 +11,7 @@ import { FourierDisplay } from "./FourierDisplay";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.ogg",
     meta: {
       by: [
         {
@@ -21,13 +21,14 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 00:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      blendMode: "exclusion",
       darkLight: "dark",
-    },
+      },
   },
   1: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.ogg",
     meta: {
       by: [
         {
@@ -37,14 +38,14 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 01:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      blendMode: "exclusion",
       darkLight: "dark",
-    },
+      },
   },
   2: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
-    meta: {
+    audioUrl: "./taking-root/music/11pm-loop.ogg",    meta: {
       by: [
         {
           name: "Scruffy",
@@ -53,13 +54,14 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 02:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      blendMode: "exclusion",
       darkLight: "dark",
     },
   },
   3: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.ogg",
     meta: {
       by: [
         {
@@ -69,13 +71,14 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "(track 03:00 not yet released)",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
+      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      blendMode: "exclusion",
       darkLight: "dark",
     },
   },
   4: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/6am-loop.ogg",
     meta: {
       by: [
         {
@@ -91,7 +94,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   5: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/6am-loop.ogg",
     meta: {
       by: [
         {
