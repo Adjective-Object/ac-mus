@@ -308,10 +308,20 @@ export class AmbienceManager<TEntityId extends string> {
       return;
     }
 
+    nodeToDelete.cleanupAndStopPlayback();
+
     for (let source of nodeToDelete.audioSources) {
-      this._audioHostElement?.removeChild?.(source.element);
+      source.volumeGain.disconnect();
+      source.crossFadeGain.disconnect();
+      source.source.disconnect();
     }
     nodeToDelete.panner.disconnect();
+
+    for (let source of nodeToDelete.audioSources) {
+      source.element.pause()
+      source.element.onended = null;
+      this._audioHostElement?.removeChild?.(source.element);
+    }
 
     this._ambienceNodes.delete(nodeId);
 
