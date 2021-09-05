@@ -172,13 +172,10 @@ export class AmbienceManager<TEntityId extends string> {
       (window as any).webkitAudioContext)({
         latencyHint: 'playback'
       });
-    
-      console.log('baseLatency', this._audioContext.baseLatency, this._audioContext)
-  }
+    }
 
   public register(audioHostElement: HTMLElement) {
     this._audioHostElement = audioHostElement;
-    console.log("context", this._audioContext);
   }
   
   public insertAnalyser(): AnalyserNode {

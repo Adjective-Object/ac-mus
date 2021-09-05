@@ -38,12 +38,27 @@ export type CurrentTrackInfo = {
     nextTrack: ActiveMusicTrack,
 }
 
+const normalizeHourlyTimeline = (
+    timeline: HourlyTimeline
+): HourlyTimeline => {
+    const sanitizedTimeline: HourlyTimeline = {...timeline}
+    const pageUrl = new URL(window.location.toString());
+    for (let k of Object.keys(sanitizedTimeline).map(x => Number(x)).filter(isHour)) {
+        const unsanitizedEntry = timeline[k];
+        sanitizedTimeline[k] = {...unsanitizedEntry, audioUrl: new URL(unsanitizedEntry.audioUrl, pageUrl).toString()}
+    }
+
+    return sanitizedTimeline;
+}
+
 export class TimelineManager {
     private _callbacks: ((currentTrackInfo: CurrentTrackInfo) => void)[] = []
     private _cancelTimer: undefined | (() => void)
     private _hourOffset: number = 0;
+    private _hourlyTimeline: HourlyTimeline;
 
-    constructor(private _hourlyTimeline: HourlyTimeline) {
+    constructor(hourlyTimeline: HourlyTimeline) {
+        this._hourlyTimeline = normalizeHourlyTimeline(hourlyTimeline);
     }
 
     public get hourOffset() {

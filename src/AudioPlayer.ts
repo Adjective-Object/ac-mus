@@ -23,6 +23,8 @@ export class AudioPlayer {
     this._preloadAudioElement = document.createElement("audio");
     this._currentAudioElement.loop = true;
     this._preloadAudioElement.loop = true;
+    this._currentAudioElement.preload = 'auto';
+    this._preloadAudioElement.preload = 'auto';
     targetElement.appendChild(this._currentAudioElement);
     targetElement.appendChild(this._preloadAudioElement);
 
@@ -97,9 +99,17 @@ export class AudioPlayer {
       currentTrack.audioUrl === this._currentAudioElement.src &&
       nextTrack.audioUrl === this._preloadAudioElement.src
     ) {
+      // make sure our current audio is playing
+      if (this._currentAudioElement.paused) {
+        this._currentAudioElement.play()
+      }
       // noop, no updates to perform
       return;
     } else if (!this.isPlaying) {
+      // make sure our current audio is NOT playing
+      if (!this._currentAudioElement.paused) {
+        this._currentAudioElement.pause()
+      }
       // if we are not playing, do nothing
     } else {
       // Load the track and next track into the audio elements
@@ -111,9 +121,13 @@ export class AudioPlayer {
         this._preloadAudioElement = tmp;
         // stop playback for the preload element
         this._preloadAudioElement.pause();
+        // start playback for the playing element
+        this._currentAudioElement.play();
       } else {
-        // otherwise, just load the current track
+        // otherwise, just load the current track and preload the next track
         this._currentAudioElement.src = currentTrack.audioUrl;
+        // start playback for the playing element
+        this._currentAudioElement.play();
       }
       this._preloadAudioElement.src = nextTrack.audioUrl;
     }

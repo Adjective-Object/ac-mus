@@ -26,8 +26,6 @@ class AmbienceNodeUI<TEntityId extends string> {
     const slidersContainer = doc.createElement('div')
     slidersContainer.classList.add('ambience-sliders-container')
 
-    console.log(this._ambienceManager.getAmbienceNodeVolume(this._ambienceNode.id))
-
     const volumeInput = doc.createElement("input");
     volumeInput.classList.add('ambience-slider', 'volume')
     volumeInput.type = "range";
