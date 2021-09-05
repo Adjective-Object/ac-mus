@@ -567,6 +567,7 @@ input[type="range"]::-ms-fill-upper {
 .ambience-node .input-container.volume::before {
   content: url("/common/svg/volume-down.svg");
   width: 0.75em;
+  height: 0.75em;
 }
 
 .ambience-node .input-container.panner::before {
@@ -574,6 +575,7 @@ input[type="range"]::-ms-fill-upper {
   position: relative;
   top:0.15em;
   width: 0.75em;
+  height: 0.75em;
 }
 
 .ambience-node .close-button {
