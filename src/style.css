@@ -304,7 +304,8 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: #c3b241;
   cursor: pointer;
-  margin-top: -0.2em; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  position:relative;
+  top: -0.3em; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
 
 /* All the same stuff for Firefox */
