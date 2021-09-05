@@ -100,6 +100,9 @@ function startPlayback(
       }
       const audioSource = audioSourceIter.value;
       const audioNow = audioSource.crossFadeGain.context.currentTime;
+      // apply random offset to start time so that when the same sample
+      // is on 2 different tracks, it doesn't double-up in unpleasant ways.
+      const startTimeOffset = Math.random() * 2;
 
       // fade in this
       if (!isFirstIteration) {
@@ -120,7 +123,7 @@ function startPlayback(
           console.warn(`Mismatched backup play duration: ${audioSource.element.src} had backup duration ${audioSource.backupPlayDuration} but actual was ${duration}`)
         }
         
-        audioSource.crossFadeGain.gain.setTargetAtTime(0, audioNow + duration, audioSource.fadeOutDuration * TIME_CONST_FRAC);
+        audioSource.crossFadeGain.gain.setTargetAtTime(0, audioNow + duration - startTimeOffset, audioSource.fadeOutDuration * TIME_CONST_FRAC);
       } else if (audioSource.backupPlayDuration) {
         console.warn(`Duration was NaN or not finite (${duration}), using backup duration of ${audioSource.backupPlayDuration}`);
           duration = audioSource.backupPlayDuration
@@ -128,10 +131,11 @@ function startPlayback(
         console.warn(`Duration was NaN or not finite (${duration}), cannot calculate duration`);
       }
 
+      audioSource.element.currentTime = startTimeOffset;
       audioSource.element.play();
 
       // start fading in the next track when this track starts to fade out
-      const waitSeconds = duration - audioSource.fadeOutDuration - audioSourceIterNext.value.fadeInDuration;
+      const waitSeconds = duration - audioSource.fadeOutDuration - audioSourceIterNext.value.fadeInDuration - startTimeOffset;
       await wait(waitSeconds * 1000);
 
       if (entity.cycleMode.type === "random-wait") {
