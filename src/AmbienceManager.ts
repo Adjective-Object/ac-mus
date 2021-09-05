@@ -21,6 +21,7 @@ type AudioAsset = PlayDuration & {
 };
 
 export type AmbienceEntity = {
+  name: string,
   audioAssets: [AudioAsset, ...AudioAsset[]];
   cycleMode: AudioCyclingMode;
   sequenceMode: AudioSequencingMode;
@@ -70,6 +71,7 @@ function wait(ms: number): Promise<void> {
 }
 
 const TIME_CONST_FRAC = 0.3;
+export const DEFAULT_GAIN_CAP = 2;
 
 /**
  * Starts playback of the entity against the created audio elements,
@@ -162,7 +164,11 @@ export class AmbienceManager<TEntityId extends string> {
 
   constructor(private _knownEntities: Record<TEntityId, AmbienceEntity>) {
     this._audioContext = new (window.AudioContext ||
-      (window as any).webkitAudioContext)();
+      (window as any).webkitAudioContext)({
+        latencyHint: 'playback'
+      });
+    
+      console.log('baseLatency', this._audioContext.baseLatency, this._audioContext)
   }
 
   public register(audioHostElement: HTMLElement) {
@@ -208,7 +214,7 @@ export class AmbienceManager<TEntityId extends string> {
     ][];
   }
 
-  public addAmbienceNode(entityId: TEntityId, initialVolume: number): string {
+  public addAmbienceNode(entityId: TEntityId, initialVolume: number, initialPan = 0): string {
     // start the audiocontext if it is frozen
     if (this._audioContext.state === "suspended") {
       this._audioContext.resume();
@@ -232,6 +238,7 @@ export class AmbienceManager<TEntityId extends string> {
     }
 
     const panner = this._audioContext.createStereoPanner();
+    panner.pan.value = initialPan;
     const audioAssetsRepeated = [
       ...entity.audioAssets,
       ...entity.audioAssets
@@ -241,7 +248,7 @@ export class AmbienceManager<TEntityId extends string> {
       // create a new audio element and attach it to the panner
       const audio = document.createElement("audio");
 
-      audio.volume = initialVolume;
+      audio.volume = 1;
       audio.src = asset.url;
       this._audioHostElement!.appendChild(audio);
       const source = this._audioContext.createMediaElementSource(audio);
@@ -249,7 +256,7 @@ export class AmbienceManager<TEntityId extends string> {
       const volumeGain = this._audioContext.createGain();
       source.connect(volumeGain);
       volumeGain.connect(crossFadeGain)
-      volumeGain.gain.value = 1;
+      volumeGain.gain.value = initialVolume * (entity.gainCap ?? DEFAULT_GAIN_CAP);
       crossFadeGain.connect(panner);
       crossFadeGain.gain.value = 1;
       
@@ -342,6 +349,17 @@ export class AmbienceManager<TEntityId extends string> {
     return node.audioSources[0].volumeGain.gain.value;
   }
 
+
+  public getAmbienceNodePan(nodeId: string): number {
+    const node = this._ambienceNodes.get(nodeId);
+    if (!node) {
+      throw new Error(`Could not get LR pan of unknown node ${nodeId}`);
+    }
+
+    return node.panner.pan.value;
+  }
+
+
   public updateAmbienceNodePanning(nodeId: string, newLRPanning: number): void {
     const nodeToUpdate = this._ambienceNodes.get(nodeId);
     if (!nodeToUpdate) {
@@ -349,5 +367,21 @@ export class AmbienceManager<TEntityId extends string> {
     }
 
     nodeToUpdate.panner.pan.value = newLRPanning;
+  }
+
+  public randomizeAmbienceNodes(numNodes: number = 5) {
+    for (let nodeId of [...this._ambienceNodes.keys()]) {
+      this.removeAmbienceNode(nodeId)
+    }
+    const knownEntityKeys = this.getAvailableEntities().map(([a]) => a)
+    for (let i = 0; i < numNodes; i++) {
+      const newNodeEntityId = knownEntityKeys[Math.floor(Math.random() * knownEntityKeys.length)];
+
+      this.addAmbienceNode(
+        newNodeEntityId,
+        0.2 + Math.random() * 0.5 * Math.pow(0.9, numNodes), // volume
+        Math.max(-1, Math.min(1, Math.random() - Math.random())) // panning
+      )
+    }
   }
 }

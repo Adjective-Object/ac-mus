@@ -28,11 +28,27 @@
   </head>
   <body id="meta-background" class="app-container">
     <div id="backgrounds-host" class="backgrounds-host"></div>
-    <div id=ambience-outer-wrapper class="ambience-outer-wrapper">
-      <div id="ambience-ui-container" class="ambience-ui-container"></div>  
+    <div id="ambience-outer-wrapper" class="ambience-outer-wrapper">
+      <div id="ambience-ui-container" class="ambience-ui-container"></div>
       <div class="ambience-sliding-ui">
-        <button id="ambience-toggle" class="media-button blue-button smaller-media-button ambience ambience-toggle">Toggle Ambience Menu</button>
-        <canvas id="ambience-fft-canvas" class="ambience-fft-canvas" width="32" height="32"></canvas>  
+        <button
+          id="ambience-toggle"
+          title="Toggle Ambience UI"
+          class="
+            media-button
+            blue-button
+            smaller-media-button
+            ambience ambience-toggle
+          "
+        >
+          Toggle Ambience Menu
+        </button>
+        <canvas
+          id="ambience-fft-canvas"
+          class="ambience-fft-canvas"
+          width="32"
+          height="32"
+        ></canvas>
       </div>
     </div>
     <div id="ambience-audio-container"></div>
@@ -51,23 +67,39 @@
         <button
           id="previous-hour-button"
           class="media-button previous-hour back"
+          title="Previous Hour"
         >
           Previous Hour
         </button>
         <button
           id="play-pause-button"
           class="media-button play-pause-button play"
+          title="Play / Pause"
         >
           Play
         </button>
-        <button id="next-hour-button" class="media-button next-hour next">
+        <button
+          id="next-hour-button"
+          class="media-button next-hour next"
+          title="Next Hour"
+        >
           Next Hour
         </button>
         <div class="bottom-ui">
           <span class="volume-slider-container">
-            <input class="main-volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01"/>
-          </span> 
-          <a href="https://scruffymusic.bandcamp.com/album/animal-crossing-taking-root-2">Buy the album</a>
+            <input
+              class="main-volume-slider"
+              id="volume-slider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+            />
+          </span>
+          <a
+            href="https://scruffymusic.bandcamp.com/album/animal-crossing-taking-root-2"
+            >Buy the album</a
+          >
         </div>
       </div>
     </div>

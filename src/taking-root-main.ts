@@ -414,6 +414,7 @@ const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
 const ambienceManager = new AmbienceManager({
   calmRain: {
+    name: "Calm Rain",
     audioAssets: [
       {
         url: "./ambience/env/Env_BaseRainCalm.ogg",
@@ -428,6 +429,7 @@ const ambienceManager = new AmbienceManager({
     gainCap: 3,
   },
   indoorTentRain: {
+    name: "Indoor Tent Rain",
     audioAssets: [
       {
         url: "./ambience/env/Env_IdrTent_BaseRainCalm00.ogg",
@@ -442,6 +444,7 @@ const ambienceManager = new AmbienceManager({
     gainCap: 3,
   },
   grassWindSummerWeak: {
+    name: "Weak Summer Wind",
     audioAssets: [
       {
         url: "./ambience/env/Env_GrassWindSummerWeak.ogg",
@@ -455,6 +458,7 @@ const ambienceManager = new AmbienceManager({
     iconUrl: "./ambience/icon/wind.svg",
   },
   seaRocks: {
+    name: "Trickling Stream",
     audioAssets: [
       {
         url: "./ambience/env/Env_SeaWaterrock00.ogg",
@@ -486,6 +490,7 @@ const ambienceManager = new AmbienceManager({
     iconUrl: "./ambience/icon/water.svg",
   },
   seaWaves: {
+    name: "Beach Waves",
     audioAssets: [
       {
         url: "./ambience/env/Env_SeaWaterWave00.ogg",

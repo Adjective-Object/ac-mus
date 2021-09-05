@@ -255,6 +255,10 @@ a {
 
   display: flex;
   align-items: center;
+  pointer-events: none;
+}
+.bottom-ui > * {
+  pointer-events: all;
 }
 
 .main-volume-slider {
@@ -475,7 +479,7 @@ input[type="range"]::-ms-fill-upper {
   pointer-events: all;
 }
 .ambience-ui-container {
-  width: 256px;
+  width: 280px;
   background-color: var(--ambience-header-fill);
   display: flex;
   flex-direction: column;
@@ -484,7 +488,7 @@ input[type="range"]::-ms-fill-upper {
   max-height: 100%;
 }
 .ambience-ui-container>* {
-  width: 256px;
+  width: 280px;
 }
 
 .ambience-ui-container:not(:focus-within, .open *) {
@@ -585,4 +589,19 @@ input[type="range"]::-ms-fill-upper {
   background-image: url("/common/svg/times.svg");
   background-repeat: no-repeat;
   background-position: center;
+  filter: brightness(0.2);
+  opacity: 0.3;
+}
+
+.ambience-node .close-button:focus,
+.ambience-node .close-button:hover {
+  filter: none;
+  outline: none;
+  opacity: 1;
+} 
+
+a:focus,
+a:hover {
+  filter: brightness(3) hue-rotate(-30deg);
+  outline: none;
 }
