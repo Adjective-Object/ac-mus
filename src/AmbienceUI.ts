@@ -44,11 +44,11 @@ class AmbienceNodeUI<TEntityId extends string> {
 
     const pannerInput = doc.createElement("input");
     pannerInput.classList.add('ambience-slider', 'panning')
-    pannerInput.value = (this._ambienceManager.getAmbienceNodePan(this._ambienceNode.id)).toString()
     pannerInput.type = "range";
     pannerInput.min = (-1).toString();
     pannerInput.max = (1).toString();
     pannerInput.step = (0.01).toString();
+    pannerInput.value = (this._ambienceManager.getAmbienceNodePan(this._ambienceNode.id)).toString()
     pannerInput.title=`${this._ambienceNode.entity.name} Left/Right Pan`
 
     pannerInput.addEventListener("input", () => {
