@@ -391,7 +391,7 @@ export class AmbienceManager<TEntityId extends string> {
 
       this.addAmbienceNode(
         newNodeEntityId,
-        0.2 + Math.random() * 0.5 * Math.pow(0.85, numNodes), // volume
+        0.1 + Math.random() * 0.5 * (1/numNodes), // volume
         Math.max(-1, Math.min(1, Math.random() - Math.random())) // panning
       )
     }
