@@ -11,7 +11,7 @@ import { FourierDisplay } from "./FourierDisplay";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
-    audioUrl: "./taking-root/music/11pm-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.mp3",
     meta: {
       by: [
         {
@@ -25,10 +25,10 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
       blendMode: "exclusion",
       darkLight: "dark",
-      },
+    },
   },
   1: {
-    audioUrl: "./taking-root/music/11pm-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.mp3",
     meta: {
       by: [
         {
@@ -42,10 +42,11 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
       blendMode: "exclusion",
       darkLight: "dark",
-      },
+    },
   },
   2: {
-    audioUrl: "./taking-root/music/11pm-loop.ogg",    meta: {
+    audioUrl: "./taking-root/music/11pm-loop.mp3",
+    meta: {
       by: [
         {
           name: "Scruffy",
@@ -61,7 +62,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   3: {
-    audioUrl: "./taking-root/music/11pm-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.mp3",
     meta: {
       by: [
         {
@@ -78,7 +79,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   4: {
-    audioUrl: "./taking-root/music/6am-loop.ogg",
+    audioUrl: "./taking-root/music/6am-loop.mp3",
     meta: {
       by: [
         {
@@ -94,7 +95,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   5: {
-    audioUrl: "./taking-root/music/6am-loop.ogg",
+    audioUrl: "./taking-root/music/6am-loop.mp3",
     meta: {
       by: [
         {
@@ -109,7 +110,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   6: {
-    audioUrl: "./taking-root/music/6am-loop.ogg",
+    audioUrl: "./taking-root/music/6am-loop.mp3",
     meta: {
       by: [
         {
@@ -124,7 +125,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   7: {
-    audioUrl: "./taking-root/music/7am-loop.ogg",
+    audioUrl: "./taking-root/music/7am-loop.mp3",
     meta: {
       by: [
         {
@@ -139,7 +140,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   8: {
-    audioUrl: "./taking-root/music/8am-loop.ogg",
+    audioUrl: "./taking-root/music/8am-loop.mp3",
     meta: {
       by: [
         {
@@ -155,7 +156,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   9: {
-    audioUrl: "./taking-root/music/9am-loop.ogg",
+    audioUrl: "./taking-root/music/9am-loop.mp3",
     meta: {
       by: [
         {
@@ -172,7 +173,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   10: {
-    audioUrl: "./taking-root/music/10am-loop.ogg",
+    audioUrl: "./taking-root/music/10am-loop.mp3",
     meta: {
       by: [
         {
@@ -188,7 +189,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   11: {
-    audioUrl: "./taking-root/music/11am-loop.ogg",
+    audioUrl: "./taking-root/music/11am-loop.mp3",
     meta: {
       by: [
         {
@@ -204,7 +205,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   12: {
-    audioUrl: "./taking-root/music/12pm-loop.ogg",
+    audioUrl: "./taking-root/music/12pm-loop.mp3",
     meta: {
       by: [
         {
@@ -221,7 +222,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   13: {
-    audioUrl: "./taking-root/music/1pm-loop.ogg",
+    audioUrl: "./taking-root/music/1pm-loop.mp3",
     meta: {
       by: [
         {
@@ -238,7 +239,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   14: {
-    audioUrl: "./taking-root/music/2pm-loop.ogg",
+    audioUrl: "./taking-root/music/2pm-loop.mp3",
     meta: {
       by: [
         {
@@ -254,7 +255,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   15: {
-    audioUrl: "./taking-root/music/3pm-loop.ogg",
+    audioUrl: "./taking-root/music/3pm-loop.mp3",
     meta: {
       by: [
         {
@@ -270,7 +271,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   16: {
-    audioUrl: "./taking-root/music/4pm-loop.ogg",
+    audioUrl: "./taking-root/music/4pm-loop.mp3",
     meta: {
       by: [
         {
@@ -286,7 +287,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   17: {
-    audioUrl: "./taking-root/music/5pm-loop.ogg",
+    audioUrl: "./taking-root/music/5pm-loop.mp3",
     meta: {
       by: [
         {
@@ -307,7 +308,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   18: {
-    audioUrl: "./taking-root/music/6pm-loop.ogg",
+    audioUrl: "./taking-root/music/6pm-loop.mp3",
     meta: {
       by: [
         {
@@ -323,7 +324,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   19: {
-    audioUrl: "./taking-root/music/7pm-loop.ogg",
+    audioUrl: "./taking-root/music/7pm-loop.mp3",
     meta: {
       by: [
         {
@@ -340,7 +341,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   20: {
-    audioUrl: "./taking-root/music/8pm-loop.ogg",
+    audioUrl: "./taking-root/music/8pm-loop.mp3",
     meta: {
       by: [
         {
@@ -357,7 +358,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   21: {
-    audioUrl: "./taking-root/music/9pm-loop.ogg",
+    audioUrl: "./taking-root/music/9pm-loop.mp3",
     meta: {
       by: [
         {
@@ -391,7 +392,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   23: {
-    audioUrl: "./taking-root/music/11pm-loop.ogg",
+    audioUrl: "./taking-root/music/11pm-loop.mp3",
     meta: {
       by: [
         {
@@ -420,7 +421,7 @@ const ambienceManager = new AmbienceManager({
     name: "Calm Rain",
     audioAssets: [
       {
-        url: "./ambience/env/Env_BaseRainCalm.ogg",
+        url: "./ambience/env/Env_BaseRainCalm.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 20.560062,
@@ -435,7 +436,7 @@ const ambienceManager = new AmbienceManager({
     name: "Indoor Tent Rain",
     audioAssets: [
       {
-        url: "./ambience/env/Env_IdrTent_BaseRainCalm00.ogg",
+        url: "./ambience/env/Env_IdrTent_BaseRainCalm00.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 20.631583,
@@ -450,7 +451,7 @@ const ambienceManager = new AmbienceManager({
     name: "Weak Summer Wind",
     audioAssets: [
       {
-        url: "./ambience/env/Env_GrassWindSummerWeak.ogg",
+        url: "./ambience/env/Env_GrassWindSummerWeak.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 27.817666,
@@ -464,7 +465,7 @@ const ambienceManager = new AmbienceManager({
     name: "Campfire",
     audioAssets: [
       {
-        url: "./ambience/env/campfire-cagan-celik-freesound.ogg",
+        url: "./ambience/env/campfire-cagan-celik-freesound.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 53.986168,
@@ -478,25 +479,25 @@ const ambienceManager = new AmbienceManager({
     name: "Trickling Stream",
     audioAssets: [
       {
-        url: "./ambience/env/Env_SeaWaterrock00.ogg",
+        url: "./ambience/env/Env_SeaWaterrock00.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
       {
-        url: "./ambience/env/Env_SeaWaterrock01.ogg",
+        url: "./ambience/env/Env_SeaWaterrock01.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
       {
-        url: "./ambience/env/Env_SeaWaterrock02.ogg",
+        url: "./ambience/env/Env_SeaWaterrock02.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 12,
         backupPlayDuration: 21,
       },
       {
-        url: "./ambience/env/Env_SeaWaterrock03.ogg",
+        url: "./ambience/env/Env_SeaWaterrock03.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 12,
         backupPlayDuration: 21,
@@ -510,25 +511,25 @@ const ambienceManager = new AmbienceManager({
     name: "Beach Waves",
     audioAssets: [
       {
-        url: "./ambience/env/Env_SeaWaterWave00.ogg",
+        url: "./ambience/env/Env_SeaWaterWave00.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 12.336,
       },
       {
-        url: "./ambience/env/Env_SeaWaterWave01.ogg",
+        url: "./ambience/env/Env_SeaWaterWave01.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 12.757333,
       },
       {
-        url: "./ambience/env/Env_SeaWaterWave02.ogg",
+        url: "./ambience/env/Env_SeaWaterWave02.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 14.404437,
       },
       {
-        url: "./ambience/env/Env_SeaWaterWave03.ogg",
+        url: "./ambience/env/Env_SeaWaterWave03.mp3",
         fadeInDuration: 2,
         fadeOutDuration: 7,
         backupPlayDuration: 12.08,
@@ -543,121 +544,121 @@ const ambienceManager = new AmbienceManager({
     gainCap: 0.5,
     audioAssets: [
       {
-        url: "./ambience/bugs/Insect_Aburazemi_WaitA01.ogg",
+        url: "./ambience/bugs/Insect_Aburazemi_WaitA01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Aburazemi_WaitA.ogg",
+        url: "./ambience/bugs/Insect_Aburazemi_WaitA.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Kirigirisu_Wait00.ogg",
+        url: "./ambience/bugs/Insect_Kirigirisu_Wait00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Kirigirisu_Wait01.ogg",
+        url: "./ambience/bugs/Insect_Kirigirisu_Wait01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Kohrogi_Wait00.ogg",
+        url: "./ambience/bugs/Insect_Kohrogi_Wait00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Kohrogi_Wait01.ogg",
+        url: "./ambience/bugs/Insect_Kohrogi_Wait01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Kumazemi_WaitA00.ogg",
+        url: "./ambience/bugs/Insect_Kumazemi_WaitA00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Kumazemi_WaitB00.ogg",
+        url: "./ambience/bugs/Insect_Kumazemi_WaitB00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Minminzemi_Wait00.ogg",
+        url: "./ambience/bugs/Insect_Minminzemi_Wait00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Minminzemi_Wait01.ogg",
+        url: "./ambience/bugs/Insect_Minminzemi_Wait01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Okera_Wait00.ogg",
+        url: "./ambience/bugs/Insect_Okera_Wait00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Suzumushi_Wait00.ogg",
+        url: "./ambience/bugs/Insect_Suzumushi_Wait00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Suzumushi_Wait01.ogg",
+        url: "./ambience/bugs/Insect_Suzumushi_Wait01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitA00.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitA00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitA01.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitA01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitA02.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitA02.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitB00.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitB00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitB01.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitB01.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitB02.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitB02.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
       },
       {
-        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitC00.ogg",
+        url: "./ambience/bugs/Insect_Tsukutsukuhoushi_WaitC00.mp3",
         fadeInDuration: 0,
         fadeOutDuration: 0,
         backupPlayDuration: 4,
