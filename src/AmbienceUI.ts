@@ -138,7 +138,7 @@ export class AmbienceUI<TEntityId extends string> {
     
         button.appendChild(img)
         button.addEventListener('click', () => {
-            this._ambienceManager.addAmbienceNode(id, 0.6);
+            this._ambienceManager.addAmbienceNode(id, 0.4);
         })
 
         container.appendChild(button);
