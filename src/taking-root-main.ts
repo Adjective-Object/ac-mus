@@ -11,7 +11,7 @@ import { FourierDisplay } from "./FourierDisplay";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
-    audioUrl: "./taking-root/music/11pm-loop.mp3",
+    audioUrl: "./taking-root/music/0am-loop.mp3",
     meta: {
       by: [
         {
@@ -19,11 +19,11 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 00:00 not yet released)",
+      title: "12AM - Taking Root",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      blendMode: "exclusion",
+      backgroundStyle: "linear-gradient(to bottom, #040825,#0a0a1e)",
+      backgroundTileImgUrl: "./taking-root/img/tile-midnight.png",
+      blendMode: "default",
       darkLight: "dark",
     },
   },
