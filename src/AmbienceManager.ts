@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import { restoreConfigFromLocalStorage, saveConfigToLocalStorage } from "./saveLoadAmbienceConfig";
 
 export type AudioCyclingMode =
   | { type: "solid-loop" }
@@ -30,9 +31,13 @@ export type AmbienceEntity = {
   maxStartTimeOffset?: number;
 };
 
+export type AmbienceEntityWithId = AmbienceEntity & {
+  id: string
+}
+
 export type AmbienceNode = {
   id: string;
-  entity: AmbienceEntity;
+  entity: AmbienceEntityWithId;
   audioSources: AudioSource[];
   panner: StereoPannerNode;
   cleanupAndStopPlayback: () => void;
@@ -82,7 +87,7 @@ export const DEFAULT_GAIN_CAP = 2;
  * @param htmlAudioElements
  */
 function startPlayback(
-  entity: AmbienceEntity,
+  entity: AmbienceEntityWithId,
   audioSources: AudioSource[]
 ): () => void {
   let shouldKeepPlaying: boolean = true;
@@ -166,8 +171,13 @@ export class AmbienceManager<TEntityId extends string> {
   private _onNodeAddedCb: ((node: AmbienceNode) => void)[] = [];
   private _onNodeRemovedCb: ((node: AmbienceNode) => void)[] = [];
   private _analyserNode?: AnalyserNode;
+  private _knownEntities: Record<TEntityId, AmbienceEntityWithId> = {} as Record<TEntityId, AmbienceEntityWithId>;
 
-  constructor(private _knownEntities: Record<TEntityId, AmbienceEntity>) {
+  constructor(knownEntities: Record<TEntityId, AmbienceEntity>) {
+    for (let [entityId, entity] of Object.entries(knownEntities) as [TEntityId, AmbienceEntity][]) {
+      this._knownEntities[entityId] = {...entity, id: entityId}
+    }
+
     this._audioContext = new (window.AudioContext ||
       (window as any).webkitAudioContext)({
         latencyHint: 'playback'
@@ -214,6 +224,11 @@ export class AmbienceManager<TEntityId extends string> {
       TEntityId,
       AmbienceEntity
     ][];
+  }
+
+  public tryRestoreConfig(): void {
+    // if we have not tried to restore yet, try to restore a saved config
+    restoreConfigFromLocalStorage<TEntityId>(this._knownEntities, this)
   }
 
   public addAmbienceNode(entityId: TEntityId, initialVolumePercent: number, initialPan = 0): string {
@@ -296,6 +311,10 @@ export class AmbienceManager<TEntityId extends string> {
         }, 0);
       }
     });
+
+    // after any change, save config to local storage
+    saveConfigToLocalStorage(this._ambienceNodes)
+
     return node.id;
   }
 
@@ -339,6 +358,9 @@ export class AmbienceManager<TEntityId extends string> {
         }
       }, 1000)
     }
+
+    // after any change, save config to local storage
+    saveConfigToLocalStorage(this._ambienceNodes)
   }
 
   public updateAmbienceNodeVolume(nodeId: string, newVolume: number): void {
@@ -350,6 +372,9 @@ export class AmbienceManager<TEntityId extends string> {
     for (let source of nodeToUpdate.audioSources) {
       source.volumeGain.gain.value = newVolume;
     }
+
+    // after any change, save config to local storage
+    saveConfigToLocalStorage(this._ambienceNodes)
   }
 
   public getAmbienceNodeVolume(nodeId: string): number {
@@ -379,6 +404,9 @@ export class AmbienceManager<TEntityId extends string> {
     }
 
     nodeToUpdate.panner.pan.value = newLRPanning;
+
+    // after any change, save config to local storage
+    saveConfigToLocalStorage(this._ambienceNodes)
   }
 
   public randomizeAmbienceNodes(numNodes: number = 5) {
@@ -397,3 +425,4 @@ export class AmbienceManager<TEntityId extends string> {
     }
   }
 }
+

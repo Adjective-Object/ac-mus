@@ -714,8 +714,13 @@ document.addEventListener("DOMContentLoaded", () => {
     HTMLDivElement,
     "#ambience-ui-container"
   );
+  let hasRestored = false;
   ambienceToggleButton.addEventListener("click", () => {
     ambienceOuterContainer.classList.toggle("open");
+    if (!hasRestored) {
+      hasRestored = true;
+      ambienceManager.tryRestoreConfig();
+    }
   });
 
   // set up ambient noise
