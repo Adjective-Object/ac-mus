@@ -165,6 +165,16 @@ a {
   width: 80%;
   position: relative;
 }
+.media-button.bell.bell-enabled::before {
+  content: url("/common/svg/bell-on.svg");
+  width: 70%;
+  position: relative;
+}
+.media-button.bell::before {
+  content: url("/common/svg/bell-slash.svg");
+  width: 70%;
+  position: relative;
+}
 
 .app-container {
   width: 100%;
@@ -266,6 +276,9 @@ a {
 }
 .bottom-ui > * {
   pointer-events: all;
+}
+.bottom-ui > *:last-child {
+  margin-left: auto;
 }
 
 .main-volume-slider {

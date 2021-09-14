@@ -8,6 +8,7 @@ import { VolumeSlider } from "./VolumeSlider";
 import { AmbienceManager } from "./AmbienceManager";
 import { AmbienceUI } from "./AmbienceUI";
 import { FourierDisplay } from "./FourierDisplay";
+import { BellButton } from "./BellButton";
 
 const takingRootTimeline: HourlyTimeline = {
   0: {
@@ -417,6 +418,9 @@ const player = new AudioPlayer(
   timelineManager,
   volumeSlider
 );
+const bellButton = new BellButton(
+  player
+)
 const metaDisplay = new MetaDisplay(timelineManager);
 const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
@@ -758,6 +762,10 @@ document.addEventListener("DOMContentLoaded", () => {
     assertElement(HTMLInputElement, "#volume-slider"),
     assertElement(HTMLElement, "#volume-slider-container")
   );
+  const bellButtonElement = assertElement(HTMLButtonElement, '#bell-button');
+  bellButton.register(
+    bellButtonElement
+  )
 
   // start the timeline
   timelineManager.start();
@@ -836,4 +844,9 @@ document.addEventListener("DOMContentLoaded", () => {
   bindButton(null, ["ArrowDown", "s"], () => {
     volumeSlider.addVolume(-0.1);
   });
+
+  bindButton(bellButtonElement, ["b"], () => {
+    bellButton.toggleBell()
+  });
+
 });

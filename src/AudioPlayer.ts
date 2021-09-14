@@ -116,14 +116,15 @@ export class AudioPlayer {
       bellChime.currentTime = 0;
       this._isWaitingForBell = true;
       bellChime.play();
-      const onBellDone = () => {
-        this._playIfPlaying();
-        bellChime.removeEventListener('ended', onBellDone)
-      }
-      bellChime.addEventListener('ended', onBellDone)
+      this._bellChimeAudioElement.addEventListener('ended', this._onBellDone)
     } else {
       this._playIfPlaying();
     }
+  }
+
+  private _onBellDone = () => {
+    this._playIfPlaying();
+    this._bellChimeAudioElement?.removeEventListener('ended', this._onBellDone)
   }
 
   private _playIfPlaying() {
@@ -184,5 +185,17 @@ export class AudioPlayer {
             setTimeout(() => {throw e}, 0)
         }
     }
+  }
+
+  public get isBellChimeEnabled() {
+    return this._isBellChimeEnabled;
+  }
+
+  public setBellChimeEnabled(isBellChimeEnabled: boolean) {
+    if (!isBellChimeEnabled && this._isWaitingForBell) {
+      this._bellChimeAudioElement?.pause()
+      this._onBellDone()
+    }
+    this._isBellChimeEnabled = isBellChimeEnabled;
   }
 }
