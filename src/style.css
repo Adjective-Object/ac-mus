@@ -396,11 +396,11 @@ input[type="range"]::-ms-fill-upper {
   border-radius: 2.6px;
 }
 
-.volume-slider-container:not(:hover, :focus-within) {
+.volume-slider-container:not(:hover, :focus-within, .auto-updated) {
   width: 2em;
 }
 
-.volume-slider-container:not(:hover, :focus-within) .main-volume-slider {
+.volume-slider-container:not(:hover, :focus-within, .auto-updated) .main-volume-slider {
   opacity: 0;
 }
 

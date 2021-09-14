@@ -413,10 +413,10 @@ const takingRootTimeline: HourlyTimeline = {
 const timelineManager = new TimelineManager(takingRootTimeline);
 const volumeSlider = new VolumeSlider(0.8);
 const player = new AudioPlayer(
-  './taking-root/music/taking-root-village-chime.mp3',
+  "./taking-root/music/taking-root-village-chime.mp3",
   timelineManager,
   volumeSlider
-  );
+);
 const metaDisplay = new MetaDisplay(timelineManager);
 const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
@@ -754,7 +754,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextHourButton = assertElement(HTMLButtonElement, "#next-hour-button");
   timeDisplay.register(prevHourButton, nextHourButton);
 
-  volumeSlider.register(assertElement(HTMLInputElement, "#volume-slider"));
+  volumeSlider.register(
+    assertElement(HTMLInputElement, "#volume-slider"),
+    assertElement(HTMLElement, "#volume-slider-container")
+  );
 
   // start the timeline
   timelineManager.start();
@@ -782,7 +785,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function bindButton(
-    button: HTMLButtonElement,
+    button: HTMLButtonElement | null | undefined,
     key: string | string[],
     cb: () => void
   ) {
@@ -791,7 +794,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("keyup", (e) => {
       if (listenToKeys.some((k) => e.key === k)) {
-        button.classList.remove("pressed");
+        button?.classList.remove("pressed");
         if (keyUpTimeout !== null) {
           clearTimeout(keyUpTimeout);
         }
@@ -806,9 +809,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         cb();
 
-        button.classList.add("pressed");
+        button?.classList.add("pressed");
         keyUpTimeout = setTimeout(() => {
-          button.classList.remove("pressed");
+          button?.classList.remove("pressed");
         }, 3000);
       }
     });
@@ -824,5 +827,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   bindButton(nextHourButton, ["ArrowRight", "d"], () => {
     timelineManager.setHourOffset(timelineManager.hourOffset + 1);
+  });
+
+  bindButton(null, ["ArrowUp", "w"], () => {
+    volumeSlider.addVolume(0.1);
+  });
+
+  bindButton(null, ["ArrowDown", "s"], () => {
+    volumeSlider.addVolume(-0.1);
   });
 });
