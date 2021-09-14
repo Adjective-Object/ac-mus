@@ -4,6 +4,8 @@ import { VolumeSlider } from "./VolumeSlider";
 export class AudioPlayer {
   private _currentAudioElement: undefined | HTMLAudioElement;
   private _preloadAudioElement: undefined | HTMLAudioElement;
+  private _bellChimeAudioElement: undefined | HTMLAudioElement;
+  private _isBellChimeEnabled: boolean = false;
   private _isPlaying: boolean = false;
   private _playPauseCallbacks: ((isPlaying: boolean) => void)[] = []
   public get isPlaying() {
@@ -11,6 +13,7 @@ export class AudioPlayer {
   }
 
   constructor(
+    private _bellChimeUrl: string,
     private _timelineManager: TimelineManager,
     private _volumeSlider: VolumeSlider
   ) {}
@@ -19,10 +22,14 @@ export class AudioPlayer {
    * Install the audio elements we playback with
    */
   public register(targetElement: HTMLElement): void {
+    this._bellChimeAudioElement = document.createElement("audio");
     this._currentAudioElement = document.createElement("audio");
     this._preloadAudioElement = document.createElement("audio");
+    this._bellChimeAudioElement.src = this._bellChimeUrl;
+    this._bellChimeAudioElement.loop = false;
     this._currentAudioElement.loop = true;
     this._preloadAudioElement.loop = true;
+    this._bellChimeAudioElement.preload = 'auto';
     this._currentAudioElement.preload = 'auto';
     this._preloadAudioElement.preload = 'auto';
     targetElement.appendChild(this._currentAudioElement);
@@ -88,10 +95,29 @@ export class AudioPlayer {
     }
   }
 
-  private _onTrackUpdated({ currentTrack, nextTrack }: CurrentTrackInfo): void {
+  private _onTrackUpdated(trackInfo: CurrentTrackInfo): void {
     if (!this._currentAudioElement || !this._preloadAudioElement) {
       throw new Error(
         "_onTrackUpdated() was called before audio elements were initialized"
+      );
+    }
+
+    this._readyTracksForPlayback(trackInfo);
+    // stop playback for the preload element
+    this._preloadAudioElement.pause();
+    if (this._isPlaying) {
+      // start playback for the playing element
+      this._currentAudioElement.play();      
+    } else {
+      // start playback for the playing element
+      this._currentAudioElement.pause();
+    }
+  }
+
+  private _readyTracksForPlayback({ currentTrack, nextTrack }: CurrentTrackInfo): void {
+    if (!this._currentAudioElement || !this._preloadAudioElement) {
+      throw new Error(
+        "_readyTracksForPlayback() was called before audio elements were initialized"
       );
     }
 
@@ -99,18 +125,8 @@ export class AudioPlayer {
       currentTrack.audioUrl === this._currentAudioElement.src &&
       nextTrack.audioUrl === this._preloadAudioElement.src
     ) {
-      // make sure our current audio is playing
-      if (this._currentAudioElement.paused) {
-        this._currentAudioElement.play()
-      }
       // noop, no updates to perform
       return;
-    } else if (!this.isPlaying) {
-      // make sure our current audio is NOT playing
-      if (!this._currentAudioElement.paused) {
-        this._currentAudioElement.pause()
-      }
-      // if we are not playing, do nothing
     } else {
       // Load the track and next track into the audio elements
       if (this._preloadAudioElement.src === currentTrack.audioUrl) {
@@ -119,15 +135,9 @@ export class AudioPlayer {
         const tmp = this._currentAudioElement;
         this._currentAudioElement = this._preloadAudioElement;
         this._preloadAudioElement = tmp;
-        // stop playback for the preload element
-        this._preloadAudioElement.pause();
-        // start playback for the playing element
-        this._currentAudioElement.play();
       } else {
         // otherwise, just load the current track and preload the next track
         this._currentAudioElement.src = currentTrack.audioUrl;
-        // start playback for the playing element
-        this._currentAudioElement.play();
       }
       this._preloadAudioElement.src = nextTrack.audioUrl;
     }

@@ -412,7 +412,11 @@ const takingRootTimeline: HourlyTimeline = {
 
 const timelineManager = new TimelineManager(takingRootTimeline);
 const volumeSlider = new VolumeSlider(0.8);
-const player = new AudioPlayer(timelineManager, volumeSlider);
+const player = new AudioPlayer(
+  './taking-root/music/taking-root-village-chime.mp3',
+  timelineManager,
+  volumeSlider
+  );
 const metaDisplay = new MetaDisplay(timelineManager);
 const timeDisplay = new TimeDisplay(timelineManager);
 const backgroundDoubleBuffer = new BackgroundDoubleBuffer(timelineManager);
