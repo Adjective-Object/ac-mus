@@ -6,6 +6,7 @@ export class AudioPlayer {
   private _preloadAudioElement: undefined | HTMLAudioElement;
   private _bellChimeAudioElement: undefined | HTMLAudioElement;
   private _isBellChimeEnabled: boolean = false;
+  private _isWaitingForBell: boolean = false;
   private _isPlaying: boolean = false;
   private _playPauseCallbacks: ((isPlaying: boolean) => void)[] = []
   public get isPlaying() {
@@ -64,7 +65,7 @@ export class AudioPlayer {
   }
 
   private _startPlaybackIfCurrent(e: Event) {
-    if (e.target === this._currentAudioElement && this._isPlaying) {
+    if (e.target === this._currentAudioElement && this._isPlaying && !this._isWaitingForBell) {
       this._currentAudioElement.play();
     }
   }
@@ -103,14 +104,35 @@ export class AudioPlayer {
     }
 
     this._readyTracksForPlayback(trackInfo);
+
     // stop playback for the preload element
     this._preloadAudioElement.pause();
+
+    if (this._isBellChimeEnabled && this._bellChimeAudioElement) {
+      // stop playback for the active element and play the bell.
+      this._currentAudioElement.pause();
+
+      const bellChime = this._bellChimeAudioElement;
+      bellChime.currentTime = 0;
+      this._isWaitingForBell = true;
+      bellChime.play();
+      const onBellDone = () => {
+        this._playIfPlaying();
+        bellChime.removeEventListener('ended', onBellDone)
+      }
+      bellChime.addEventListener('ended', onBellDone)
+    } else {
+      this._playIfPlaying();
+    }
+  }
+
+  private _playIfPlaying() {
     if (this._isPlaying) {
       // start playback for the playing element
-      this._currentAudioElement.play();      
+      this._currentAudioElement?.play();      
     } else {
       // start playback for the playing element
-      this._currentAudioElement.pause();
+      this._currentAudioElement?.pause();
     }
   }
 
@@ -162,6 +184,5 @@ export class AudioPlayer {
             setTimeout(() => {throw e}, 0)
         }
     }
-
   }
 }
