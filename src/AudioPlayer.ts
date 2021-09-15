@@ -86,9 +86,10 @@ export class AudioPlayer {
   }
 
   private _onVolumeUpdated(newVolume: number) {
-    if (this._currentAudioElement && this._preloadAudioElement) {
+    if (this._currentAudioElement && this._preloadAudioElement && this._bellChimeAudioElement) {
       this._currentAudioElement.volume = newVolume;
       this._preloadAudioElement.volume = newVolume;
+      this._bellChimeAudioElement.volume = newVolume;
     } else {
       throw new Error(
         "AudioPlayer._onVolumeUpdated called before registration?"
