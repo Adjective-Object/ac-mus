@@ -1,6 +1,6 @@
 import "./style.css";
 import { AudioPlayer } from "./AudioPlayer";
-import { HourlyTimeline, TimelineManager } from "./TimelineManager";
+import { HourlyTimeline, isHour, TimelineManager } from "./TimelineManager";
 import { MetaDisplay } from "./MetaDisplay";
 import { TimeDisplay } from "./TimeDisplay";
 import { BackgroundDoubleBuffer } from "./BackgroundDoubleBuffer";
@@ -29,7 +29,7 @@ const takingRootTimeline: HourlyTimeline = {
     },
   },
   1: {
-    audioUrl: "./taking-root/music/11pm-loop.mp3",
+    audioUrl: "./taking-root/music/1am-loop.mp3",
     meta: {
       by: [
         {
@@ -37,11 +37,11 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 01:00 not yet released)",
+      title: "1AM - Taking Root",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      blendMode: "exclusion",
+      backgroundStyle: "linear-gradient(to bottom, #02001c, #160a19)",
+      backgroundTileImgUrl: "./taking-root/img/tile-1am.png",
+      blendMode: "dodgerot",
       darkLight: "dark",
     },
   },
@@ -412,6 +412,11 @@ const takingRootTimeline: HourlyTimeline = {
 };
 
 const timelineManager = new TimelineManager(takingRootTimeline);
+// parse initial time from url
+const forcedHour = window.location.hash.length ? parseInt(window.location.hash.substring(1)) : null;
+if (forcedHour && isHour(forcedHour)) {
+  timelineManager.setHourOffset(forcedHour - new Date().getHours())
+}
 const volumeSlider = new VolumeSlider(0.8);
 const player = new AudioPlayer(
   "./taking-root/music/taking-root-village-chime.mp3",
