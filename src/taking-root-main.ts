@@ -55,7 +55,7 @@ const takingRootTimeline: HourlyTimeline = {
         },
       ],
       title: "(track 02:00 not yet released)",
-      bannerUrl: "./taking-root/img/default-banner-new.png",
+    bannerUrl: "./taking-root/img/default-banner-new.png",
       backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
       backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
       blendMode: "exclusion",
@@ -727,14 +727,6 @@ document.addEventListener("DOMContentLoaded", () => {
     HTMLDivElement,
     "#ambience-ui-container"
   );
-  let hasRestored = false;
-  ambienceToggleButton.addEventListener("click", () => {
-    ambienceOuterContainer.classList.toggle("open");
-    if (!hasRestored) {
-      hasRestored = true;
-      ambienceManager.tryRestoreConfig();
-    }
-  });
 
   // set up ambient noise
   ambienceManager.register(
@@ -829,6 +821,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+
+  let hasRestored = false;
+  const toggleAmbienceDrawer = () => {
+    ambienceOuterContainer.classList.toggle("open");
+    if (!hasRestored) {
+      hasRestored = true;
+      ambienceManager.tryRestoreConfig();
+    }
+  }
+  bindButton(ambienceToggleButton, "n", toggleAmbienceDrawer);
 
   bindButton(playPauseButtonUI, " ", () => {
     pausePlay();
