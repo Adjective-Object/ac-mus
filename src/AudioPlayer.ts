@@ -109,7 +109,7 @@ export class AudioPlayer {
     // stop playback for the preload element
     this._preloadAudioElement.pause();
 
-    if (this._isBellChimeEnabled && this._bellChimeAudioElement) {
+    if (this._isPlaying && this._isBellChimeEnabled && this._bellChimeAudioElement) {
       // stop playback for the active element and play the bell.
       this._currentAudioElement.pause();
 
