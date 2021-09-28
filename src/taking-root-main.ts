@@ -831,6 +831,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ambienceManager.tryRestoreConfig();
     }
   }
+  ambienceToggleButton.addEventListener('click', toggleAmbienceDrawer)
   bindButton(ambienceToggleButton, "n", toggleAmbienceDrawer);
 
   bindButton(playPauseButtonUI, " ", () => {
