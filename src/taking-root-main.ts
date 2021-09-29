@@ -864,7 +864,7 @@ document.addEventListener("DOMContentLoaded", () => {
     30,
     20,
     15,
-    1
+    5
   ]
   let periodIdx = 0;
   const stepNextPeriod = () => {
