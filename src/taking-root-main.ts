@@ -879,4 +879,11 @@ document.addEventListener("DOMContentLoaded", () => {
   periodButton.addEventListener('click', stepNextPeriod)
   bindButton(periodButton, ["p", "t"], stepNextPeriod);
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur()
+      }
+    }
+  })
 });
