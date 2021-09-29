@@ -858,4 +858,25 @@ document.addEventListener("DOMContentLoaded", () => {
     bellButton.toggleBell()
   });
 
+  const periodButton = assertElement(HTMLButtonElement, "#period-button");
+  const minutePeriods = [
+    60,
+    30,
+    20,
+    15,
+    1
+  ]
+  let periodIdx = 0;
+  const stepNextPeriod = () => {
+    periodIdx = (periodIdx+1) % minutePeriods.length;
+    const minutePeriod = minutePeriods[periodIdx];
+    timelineManager.setMinutePeriod(minutePeriod)
+    periodButton.dataset.buttonLabel = minutePeriod.toString()
+  }
+  timelineManager.setMinutePeriod(60)
+  periodButton.dataset.buttonLabel = (60).toString()
+
+  periodButton.addEventListener('click', stepNextPeriod)
+  bindButton(periodButton, ["p", "t"], stepNextPeriod);
+
 });

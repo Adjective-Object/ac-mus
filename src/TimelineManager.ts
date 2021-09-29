@@ -88,6 +88,7 @@ export class TimelineManager {
   private _callbacks: ((currentTrackInfo: CurrentTrackInfo) => void)[] = [];
   private _cancelTimer: undefined | (() => void);
   private _hourOffset: number = 0;
+  private _minutesPeriod: number = 60;
   private _hourlyTimeline: HourlyTimeline;
 
   constructor(hourlyTimeline: HourlyTimeline) {
@@ -98,17 +99,38 @@ export class TimelineManager {
     return this._hourOffset;
   }
 
-  public setHourOffset(offset: number) {
-    this._hourOffset = offset;
-    this._advanceTrack(new Date());
+  public setMinutePeriod(period: number) {
+    // HACK: ensure the current track and intended track align
+    // at time of setting by getting the track before and after
+    // updating minutesPeriod, and then applying the difference
+    // to the track offset.
+    const now = new Date();
+    const priorPosition = this._getTimelinePositionForDate(now)
+    this._minutesPeriod = Math.max(1, Math.min(60, period));
+    const afterPosition = this._getTimelinePositionForDate(now)
+    this._hourOffset += priorPosition - afterPosition;
+
+    // call this because it will also cancel any pending timeout
+    // and schedule a new one.
+    this._updateTrackForTime(now);
   }
 
-  public getTrackForTime(now: Date): CurrentTrackInfo {
-    const hr = now.getHours();
+  public setHourOffset(offset: number) {
+    this._hourOffset = offset;
+    this._updateTrackForTime(new Date());
+  }
+
+
+  private _getTimelinePositionForDate(now: Date): Hour {
+    const hr = Math.floor((now.getHours() * 60 + now.getMinutes()) / this._minutesPeriod) % 24
     if (!isHour(hr)) {
       throw new Error("got illegal hour from date!");
     }
-    const hrWithOffset = addHour(hr, this._hourOffset);
+    return addHour(hr, this._hourOffset);
+  }
+
+  public getTrackForTime(now: Date): CurrentTrackInfo {
+    const hrWithOffset = this._getTimelinePositionForDate(now);
     return {
       previousTrack: this._getFromHourlyTimeline(hrWithOffset, -1),
       currentTrack: this._getFromHourlyTimeline(hrWithOffset, 0),
@@ -132,13 +154,13 @@ export class TimelineManager {
    */
   public start(): void {
     const now = new Date();
-    this._advanceTrack(now);
+    this._updateTrackForTime(now);
   }
 
   /**
    * Advances the track and notifies all listeners of the current track
    */
-  private _advanceTrack(now: Date) {
+  private _updateTrackForTime(now: Date) {
     const currentTrackInfo = this.getTrackForTime(now);
     for (let cb of this._callbacks) {
       try {
@@ -150,26 +172,25 @@ export class TimelineManager {
       }
     }
 
-    const hours = now.getHours();
+    const nextHour = nextTimeOnPeriod(now, this._minutesPeriod)
 
-    const nextHour =
-      hours < 23
-        ? new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            now.getHours() + 1
-          )
-        : new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0);
-
+    // clear any existing timeout
+    this._cancelAndClearPendingTimeout()
     this._cancelTimer = resynchronizingTimer(
       nextHour,
-      this._advanceTrack.bind(this, nextHour)
+      this._updateTrackForTime.bind(this, nextHour)
     );
   }
 
   public stop(): void {
-    this._cancelTimer?.();
+    this._cancelAndClearPendingTimeout()
+  }
+
+  private _cancelAndClearPendingTimeout() {
+    if (this._cancelTimer) {
+      this._cancelTimer();
+      this._cancelTimer = undefined;
+    }
   }
 
   public registerTimelineCallback(
@@ -208,4 +229,17 @@ function resynchronizingTimer(targetTime: Date, cb: () => void): () => void {
   return () => {
     resyncHandle && clearTimeout(resyncHandle);
   };
+}
+
+function nextTimeOnPeriod(baseDate: Date, periodMinutes: number) {
+  const nextPeriodStartMinutes = Math.floor((baseDate.getMinutes() / periodMinutes + 1)) * periodMinutes;
+  return new Date(
+    baseDate.getFullYear(),
+    baseDate.getMonth(),
+    baseDate.getDate(),
+    baseDate.getHours(),
+     // if this is over 60, the Date constructor automatically
+     // rolls it over to the next hour
+    nextPeriodStartMinutes
+  )
 }

@@ -126,6 +126,16 @@ a {
   transition: transform 0.1s, filter 0.1s;
 }
 
+.media-button.data-text::before {
+  content: attr(data-button-label);
+  color: #c3b241;
+  font-size: 18px;
+  font-family: "Fink Heavy";
+  position: relative;
+  top: 2px;
+
+}
+
 .media-button:focus {
   border: 3px solid var(--media-button-stroke);
 }
@@ -285,6 +295,9 @@ a {
 }
 .bottom-ui > *:last-child {
   margin-left: auto;
+}
+.bottom-ui > * {
+  margin: 6px;
 }
 
 .main-volume-slider {
