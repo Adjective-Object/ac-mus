@@ -39,14 +39,14 @@ const takingRootTimeline: HourlyTimeline = {
       ],
       title: "1AM - Taking Root",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #02001c, #160a19)",
+      backgroundStyle: "linear-gradient(to bottom, #06000b, #0b050d)",
       backgroundTileImgUrl: "./taking-root/img/tile-1am.png",
       blendMode: "dodgerot",
       darkLight: "dark",
     },
   },
   2: {
-    audioUrl: "./taking-root/music/11pm-loop.mp3",
+    audioUrl: "./taking-root/music/2am-loop.mp3",
     meta: {
       by: [
         {
@@ -54,16 +54,16 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 02:00 not yet released)",
+      title: "2 AM - Taking Root",
     bannerUrl: "./taking-root/img/default-banner-new.png",
       backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
-      blendMode: "exclusion",
+      backgroundTileImgUrl: "./taking-root/img/tile-3am.png",
+      blendMode: "funky",
       darkLight: "dark",
     },
   },
   3: {
-    audioUrl: "./taking-root/music/11pm-loop.mp3",
+    audioUrl: "./taking-root/music/3am-loop.mp3",
     meta: {
       by: [
         {
@@ -71,32 +71,37 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 03:00 not yet released)",
+      title: "3 AM - Taking Root",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #120733, #080818)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      backgroundStyle: "linear-gradient(to bottom, #5c044d, #11000d)",
+      backgroundTileImgUrl: "./taking-root/img/tile-latenight.png",
       blendMode: "exclusion",
       darkLight: "dark",
     },
   },
   4: {
-    audioUrl: "./taking-root/music/6am-loop.mp3",
+    audioUrl: "./taking-root/music/4am-loop.mp3",
     meta: {
       by: [
         {
           name: "Scruffy",
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
+        {
+          name: "⚣ RUD ⚣",
+          profileUrl: "https://twitter.com/driftrud",
+        },
       ],
-      title: "(track 04:00 not yet released)",
+      title: "4 AM - Taking Root",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #353393, #241b4d)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      backgroundStyle: "linear-gradient(to bottom, #35022c, #11000d)",
+      backgroundTileImgUrl: "./taking-root/img/tile-4am.png",
+      blendMode: "exclusion",
       darkLight: "dark",
     },
   },
   5: {
-    audioUrl: "./taking-root/music/6am-loop.mp3",
+    audioUrl: "./taking-root/music/5am-loop.mp3",
     meta: {
       by: [
         {
@@ -104,10 +109,11 @@ const takingRootTimeline: HourlyTimeline = {
           profileUrl: "https://twitter.com/Scruffy_Tweets",
         },
       ],
-      title: "(track 05:00 not yet released)",
+      title: "5 AM - Taking Root",
       bannerUrl: "./taking-root/img/default-banner-new.png",
-      backgroundStyle: "linear-gradient(to bottom, #d7561d, #faeec1)",
-      backgroundTileImgUrl: "./taking-root/img/tile-leaf.png",
+      backgroundStyle: "linear-gradient(to bottom, #540e1e, #29081d)",
+      backgroundTileImgUrl: "./taking-root/img/tile-weeb.png",
+      blendMode: "exclusion",
     },
   },
   6: {

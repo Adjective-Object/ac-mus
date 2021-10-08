@@ -50,7 +50,8 @@ export type MusicMeta = {
     | "half-visible"
     | "transparent-soft"
     | "exclusion"
-    | "dodgerot";
+    | "dodgerot"
+    | "funky";
   darkLight?: "dark" | "light";
   by?: Artist[];
 };

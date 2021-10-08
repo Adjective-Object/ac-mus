@@ -127,5 +127,36 @@
 
       gtag("config", "G-M7PT6PTH10");
     </script>
+    <!-- <svg width="0" height="0">
+      <filter id="chromatic-aberration-filter">
+        <feColorMatrix type="matrix" 
+          result="red_"             
+          values="4 0 0 0 0
+                  0 0 0 0 0 
+                  0 0 0 0 0 
+                  0 0 0 1 0"/>
+        <feOffset in="red_" dx="2" dy="0" result="red">
+          <animate attributeName="dy"
+          values="2;0;2" dur="0.5s" repeatCount="indefinite" />
+          <animate attributeName="dx"
+          values="-1;-3;-1" dur="0.3s" repeatCount="indefinite" />
+        </feOffset>
+        <feColorMatrix type="matrix" 
+          in="SourceGraphic"             
+          result="blue_"             
+          values="0 0 0 0 0
+                  0 3 0 0 0 
+                  0 0 10 0 0 
+                  0 0 0 1 0"/>
+        <feOffset in="blue_" dx="-3" dy="0" result="blue">
+          <animate attributeName="dx"
+          values="-3;2;1;2;-1;0;-4;-3  " dur="1.3s" repeatCount="indefinite" />
+          <animate attributeName="dx"
+          values="0;1;0;-3;2;0 " dur="2.2s" repeatCount="indefinite" />
+        </feOffset>   
+        <feBlend mode="screen" in="red" in2="blue"/>
+
+      </filter>
+    </svg> -->
   </body>
 </html>

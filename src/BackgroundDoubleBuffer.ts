@@ -18,7 +18,7 @@ type BackgroundElementsAndState = {
   assignedToTimelinePosition?: Hour;
 };
 
-const CONTAINER_BUFFER_SIZE = 6;
+const CONTAINER_BUFFER_SIZE = 4;
 
 function createBackground(): BackgroundContainerElements {
   const backgroundElement = document.createElement("div");
@@ -44,7 +44,9 @@ function updateBackgroundToMeta(
   meta: MusicMeta
 ): void {
   if (meta?.backgroundTileImgUrl) {
-    backgroundElements.tileElement.style.backgroundImage = `url('${meta.backgroundTileImgUrl}')`;
+    const bgImgUrl = `url('${meta.backgroundTileImgUrl}')`;
+    backgroundElements.tileElement.style.backgroundImage = bgImgUrl;
+    backgroundElements.tileElement.style.setProperty('--bg-tile', bgImgUrl);
   }
 
   if (meta?.backgroundStyle) {
@@ -58,7 +60,15 @@ function updateBackgroundToMeta(
     }
   }
 
-  backgroundElements.tileMaskElement.classList.add((meta.blendMode || 'default') + "-blend");
+  backgroundElements.tileMaskElement.classList.add(
+    (meta.blendMode || "default") + "-blend"
+  );
+  // remove and re-add to element tree to reset scrolling position
+  const parent = backgroundElements.tileElement.parentElement;
+  if (parent) {
+    parent.removeChild(backgroundElements.tileElement);
+    parent.appendChild(backgroundElements.tileElement);
+  }
 }
 
 export class BackgroundDoubleBuffer {
@@ -124,7 +134,8 @@ export class BackgroundDoubleBuffer {
     current.elements.styleAndContainerElement.classList.add("active");
     // set the common background
     if (this._commonBackground) {
-        this._commonBackground.style.background = currentTrack.meta.backgroundStyle;
+      this._commonBackground.style.background =
+        currentTrack.meta.backgroundStyle;
     }
     this._lastTrackPosition = currentTrack.timelinePosition;
   }
