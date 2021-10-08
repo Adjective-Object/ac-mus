@@ -44,7 +44,7 @@ function updateBackgroundToMeta(
   meta: MusicMeta
 ): void {
   if (meta?.backgroundTileImgUrl) {
-    const bgImgUrl = `url('${meta.backgroundTileImgUrl}')`;
+    const bgImgUrl = `url('${new URL(meta.backgroundTileImgUrl, window.location.toString()).toString()}')`;
     backgroundElements.tileElement.style.backgroundImage = bgImgUrl;
     backgroundElements.tileElement.style.setProperty('--bg-tile', bgImgUrl);
   }
