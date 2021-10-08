@@ -1,0 +1,165 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Taking Root</title>
+    <meta name="description" content="24/7 Taking Root Radio" />
+    <meta name="author" content="adjective-object" />
+
+    <meta property="og:title" content="24/7 Taking Root Radio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://huang-hobbs.co/ac-mus/" />
+    <meta
+      property="og:description"
+      content="A website for listening to hourly music and ambient noise"
+    />
+    <meta property="og:image" content="img/og-img.jpg" />
+
+    <link rel="icon" href="/ac-mus/assets/favicon.1119eb35.ico" />
+    <link rel="icon" href="/ac-mus/assets/favicon.e39a32f8.png" type="image/png" />
+
+    <link
+      rel="preload"
+      href="/ac-mus/assets/pause.324680c1.svg"
+      as="image"
+      type="image/svg+xml"
+    />
+    <link
+      rel="preload"
+      href="/ac-mus/assets/bell-on.1d781e39.svg"
+      as="image"
+      type="image/svg+xml"
+    />
+    <script type="module" crossorigin src="/ac-mus/assets/main.56dba29d.js"></script>
+    <link rel="modulepreload" href="/ac-mus/assets/vendor.f688e3f2.js">
+    <link rel="stylesheet" href="/ac-mus/assets/main.e19d80b5.css">
+  </head>
+  <body id="meta-background" class="app-container">
+    <div id="backgrounds-host" class="backgrounds-host"></div>
+    <div id="ambience-outer-wrapper" class="ambience-outer-wrapper">
+      <div id="ambience-ui-container" class="ambience-ui-container"></div>
+      <div class="ambience-sliding-ui">
+        <button
+          id="ambience-toggle"
+          title="Toggle Ambience UI"
+          class="
+            media-button
+            blue-button
+            smaller-media-button
+            ambience ambience-toggle
+          "
+        >
+          Toggle Ambience Menu
+        </button>
+        <canvas
+          id="ambience-fft-canvas"
+          class="ambience-fft-canvas"
+          width="28"
+          height="28"
+        ></canvas>
+      </div>
+    </div>
+    <div id="ambience-audio-container"></div>
+
+    <div id="visuals-host" class="visuals-host">
+      <div id="song-meta" class="song-meta">
+        <img id="meta-banner-img" class="meta-banner-img" />
+        <div>
+          <span id="meta-music-title" class="meta-music-title"></span>
+          <span class="artist-container">
+            By <span id="meta-artist-container"></span>
+          </span>
+        </div>
+      </div>
+      <div class="controls-container">
+        <button
+          id="previous-hour-button"
+          class="media-button previous-hour back"
+          title="Previous Hour"
+        >
+          Previous Hour
+        </button>
+        <button
+          id="play-pause-button"
+          class="media-button play-pause-button play"
+          title="Play / Pause"
+        >
+          Play
+        </button>
+        <button
+          id="next-hour-button"
+          class="media-button next-hour next"
+          title="Next Hour"
+        >
+          Next Hour
+        </button>
+        <div class="bottom-ui">
+          <button id="period-button" class="media-button smaller-media-button time-period data-text">Change Music Switch Time (60)</button>
+          <button id="bell-button" class="media-button bell smaller-media-button">Enable Hourly Bell</button>
+          <span id="volume-slider-container" class="volume-slider-container">
+            <input
+              class="main-volume-slider"
+              id="volume-slider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+            />
+          </span>
+          <a
+            href="https://scruffymusic.bandcamp.com/album/animal-crossing-taking-root-2"
+            >Buy the album</a
+          >
+        </div>
+      </div>
+    </div>
+    <div id="music-host"></div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M7PT6PTH10"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M7PT6PTH10");
+    </script>
+    <!-- <svg width="0" height="0">
+      <filter id="chromatic-aberration-filter">
+        <feColorMatrix type="matrix" 
+          result="red_"             
+          values="4 0 0 0 0
+                  0 0 0 0 0 
+                  0 0 0 0 0 
+                  0 0 0 1 0"/>
+        <feOffset in="red_" dx="2" dy="0" result="red">
+          <animate attributeName="dy"
+          values="2;0;2" dur="0.5s" repeatCount="indefinite" />
+          <animate attributeName="dx"
+          values="-1;-3;-1" dur="0.3s" repeatCount="indefinite" />
+        </feOffset>
+        <feColorMatrix type="matrix" 
+          in="SourceGraphic"             
+          result="blue_"             
+          values="0 0 0 0 0
+                  0 3 0 0 0 
+                  0 0 10 0 0 
+                  0 0 0 1 0"/>
+        <feOffset in="blue_" dx="-3" dy="0" result="blue">
+          <animate attributeName="dx"
+          values="-3;2;1;2;-1;0;-4;-3  " dur="1.3s" repeatCount="indefinite" />
+          <animate attributeName="dx"
+          values="0;1;0;-3;2;0 " dur="2.2s" repeatCount="indefinite" />
+        </feOffset>   
+        <feBlend mode="screen" in="red" in2="blue"/>
+
+      </filter>
+    </svg> -->
+  </body>
+</html>
