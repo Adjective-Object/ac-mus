@@ -114,6 +114,7 @@ const takingRootTimeline: HourlyTimeline = {
       backgroundStyle: "linear-gradient(to bottom, #540e1e, #29081d)",
       backgroundTileImgUrl: "./taking-root/img/tile-weeb.png",
       blendMode: "exclusion",
+      darkLight: "dark",
     },
   },
   6: {
